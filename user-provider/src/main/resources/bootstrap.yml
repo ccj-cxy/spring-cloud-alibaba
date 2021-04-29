@@ -3,14 +3,15 @@ spring:
     nacos:
       config:
         file-extension: yml
+        #shared-dataids: user-provider.yaml #配置要引入的配置
+        #refreshable-dataids: user-provider.yaml
         name: user-provider
-        group: ${spring.profiles.active}
-        namespace: 531afa2d-de8c-4452-835e-a877df2fa021
+        group: DEFAULT_GROUP
+        namespace: public
         server-addr: 127.0.0.1:8848
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: 531afa2d-de8c-4452-835e-a877df2fa021
-        group: ${spring.profiles.active}
+        namespace: public
   application:
     name: user-provider
 

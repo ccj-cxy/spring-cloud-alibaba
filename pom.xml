@@ -8,7 +8,7 @@
     <artifactId>spring-cloud-alibaba</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-<!--        <module>geteway</module>-->
+        <module>geteway</module>
         <module>user-provider</module>
         <module>user-consumer</module>
     </modules>
@@ -26,8 +26,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
-        <!--<spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>-->
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+<!--        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>-->
     </properties>
 
     <dependencyManagement>
