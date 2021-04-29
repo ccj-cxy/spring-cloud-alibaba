@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        file-extension: yml
+        name: user-provider
+        group: ${spring.profiles.active}
+        namespace: 531afa2d-de8c-4452-835e-a877df2fa021
+        server-addr: 127.0.0.1:8848
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 531afa2d-de8c-4452-835e-a877df2fa021
+        group: ${spring.profiles.active}
+  application:
+    name: user-provider
+
