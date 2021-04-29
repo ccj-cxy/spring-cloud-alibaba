@@ -7,6 +7,11 @@
     <groupId>com.snk</groupId>
     <artifactId>spring-cloud-alibaba</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+<!--        <module>geteway</module>-->
+        <module>user-provider</module>
+        <module>user-consumer</module>
+    </modules>
     <packaging>pom</packaging>
     <!--父工程-->
     <parent>
@@ -43,4 +48,15 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <!--指定链路追踪-->
+    <!--<dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+    </dependencies>-->
 </project>
