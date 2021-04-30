@@ -11,6 +11,8 @@
         <module>geteway</module>
         <module>user-provider</module>
         <module>user-consumer</module>
+        <module>cloud-resources</module>
+        <module>snk-web-common</module>
     </modules>
     <packaging>pom</packaging>
     <!--父工程-->
@@ -28,6 +30,7 @@
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
 <!--        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>-->
+        <cn.hutool.version>5.5.1</cn.hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +48,11 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${cn.hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
