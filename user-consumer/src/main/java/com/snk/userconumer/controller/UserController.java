@@ -1,9 +1,11 @@
 package com.snk.userconumer.controller;
 
+import com.snk.common.exception.BusinessException;
 import com.snk.userconumer.feign.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -42,6 +44,12 @@ public class UserController {
         String url = "http://user-provider/user/config";
         String result = restTemplate.getForObject(url, String.class);
         return result;
+    }
+
+
+    @GetMapping("error")
+    public String error() {
+        throw new BusinessException("访问接口异常");
     }
 
 
