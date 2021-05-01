@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Threads
 {
-    private static final Logger logger = LoggerFactory.getLogger(com.snk.easyexcel.utils.Threads.class);
+    private static final Logger logger = LoggerFactory.getLogger(Threads.class);
 
     /**
      * sleep等待,单位为毫秒

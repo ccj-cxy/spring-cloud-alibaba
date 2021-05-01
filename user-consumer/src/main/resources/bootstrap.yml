@@ -22,3 +22,15 @@ feign:
 user-provider: #服务名
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+
+seata:
+  client:
+    support:
+      spring:
+        datasource-autoproxy: true
+  tx-service-group: ${spring.application.name}-fescar-service-group
+  service:
+    grouplist:
+      default: localhost:8091
+    vgroup-mapping:
+      workflow-fescar-service-group: default
