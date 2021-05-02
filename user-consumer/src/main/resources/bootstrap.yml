@@ -4,8 +4,6 @@ spring:
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yml
-        shared-dataids: user-consumer.yaml #配置要引入的配置
-        refreshable-dataids: user-consumer.yaml
         name: user-consumer
         group: DEFAULT_GROUP
         namespace: public
@@ -31,6 +29,22 @@ seata:
   tx-service-group: ${spring.application.name}-fescar-service-group
   service:
     grouplist:
-      default: localhost:8091
+      default: 127.0.0.1:8091
     vgroup-mapping:
       workflow-fescar-service-group: default
+  registry:
+    type: nacos
+    nacos:
+      namespace: public
+  config:
+    type: nacos
+    nacos:
+      namespace: public
+      group: SEATA_GROUP
+logging:
+  level:
+    com:
+      alibaba:
+        nacos:
+          client:
+            naming: warn
