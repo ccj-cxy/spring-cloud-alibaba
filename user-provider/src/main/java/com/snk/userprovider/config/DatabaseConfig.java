@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 public class DatabaseConfig {
-    @Value(value = "${com.snk.email.service.username}")
+    @Value(value = "${service.username}")
     private String username;
     @Value("${server.port}")
     private String port;
