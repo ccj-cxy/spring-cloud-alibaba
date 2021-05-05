@@ -27,7 +27,7 @@ seata:
     support:
       spring:
         datasource-autoproxy: true
-  tx-service-group: ${spring.application.name}-fescar-com.snk.email.service-group
+  tx-service-group: ${spring.application.name}-fescar-service-group
   service:
     grouplist:
       default: 127.0.0.1:8091
