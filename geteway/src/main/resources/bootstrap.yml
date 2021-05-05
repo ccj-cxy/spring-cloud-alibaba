@@ -30,6 +30,13 @@ spring:
             - Path=/user-consumer/** #当请求路径满足Path指定的规则时，此路由信息才会正常转发
           filters:  #过滤器（在请求传递过程中对请求做处理）
             - StripPrefix=1 #在请求转发之前去掉一层路径
+        - id: email-service #当前路由转发的标识，要求唯一 ，默认是UUID
+          uri:  lb://email-service #请求最终要被转发的地址
+          order: 1 #路由的优先级 数字越小代表路由的优先级越高
+          predicates: #断言(条件判断，返回值为boolean，转发满足的条件)
+            - Path=/email-service/** #当请求路径满足Path指定的规则时，此路由信息才会正常转发
+          filters:  #过滤器（在请求传递过程中对请求做处理）
+            - StripPrefix=1 #在请求转发之前去掉一层路径
   application:
     name: api-gateway
   redis:
