@@ -1,0 +1,30 @@
+##微服务配置
+spring:
+  cloud:
+    nacos:
+#      com.snk.email.config:
+#        server-addr: 127.0.0.1:8848
+#        file-extension: yml
+#        name: email-com.snk.email.service
+#        group: DEFAULT_GROUP
+#        namespace: public
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: public
+
+  application:
+    name: email-service
+feign:
+  hystrix:
+    enabled: true
+##配置负载均衡权重，不同服务都需要单独配置
+user-provider: #服务名
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+logging:
+  level:
+    com:
+      alibaba:
+        nacos:
+          client:
+            naming: warn

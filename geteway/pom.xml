@@ -31,7 +31,7 @@
         <!--配置中心-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-nacos-config</artifactId>
+            <artifactId>spring-cloud-alibaba-nacos-com.snk.email.config</artifactId>
         </dependency>
 
         <dependency>

@@ -1,3 +1,4 @@
+##微服务配置
 spring:
   cloud:
     nacos:
@@ -26,7 +27,7 @@ seata:
     support:
       spring:
         datasource-autoproxy: true
-  tx-service-group: ${spring.application.name}-fescar-service-group
+  tx-service-group: ${spring.application.name}-fescar-com.snk.email.service-group
   service:
     grouplist:
       default: 127.0.0.1:8091

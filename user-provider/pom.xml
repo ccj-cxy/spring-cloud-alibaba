@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-com.snk.email.config</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

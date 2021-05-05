@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author zh
- * @ClassName cn.saytime.config.MybatisConfiguration
+ * @ClassName cn.saytime.com.snk.email.config.MybatisConfiguration
  * @Description
  */
 //开启事务

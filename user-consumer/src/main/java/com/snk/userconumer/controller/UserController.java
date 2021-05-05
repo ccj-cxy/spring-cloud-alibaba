@@ -20,7 +20,7 @@ public class UserController {
     @RequestMapping("consumer")
     public String consumer() {
         ServiceInstance provider = loadBalancerClient.choose("user-provider");
-        String url = "http://"+provider.getHost()+":"+provider.getPort()+"/user/config";
+        String url = "http://"+provider.getHost()+":"+provider.getPort()+"/user/com.snk.email.config";
         RestTemplate restTemp = new RestTemplate();
         String result = restTemp.getForObject(url, String.class);
         return result;

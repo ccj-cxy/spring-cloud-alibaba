@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * @ClassName cn.saytime.config.DruidConfiguration
+ * @ClassName cn.saytime.com.snk.email.config.DruidConfiguration
  * @Description
  */
 @Configuration

@@ -1,0 +1,28 @@
+server:
+  port: 10001
+spring:
+  mail:
+    username: 994173486@qq.com
+    password: ****
+    host: smtp.qq.com
+    default-encoding: utf-8
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          socketFactory:
+            class=javax:
+              net:
+                ssl: SSLSocketFactory  # thymeleaf
+      from: 994173486@qq.com
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    mode: HTML
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+

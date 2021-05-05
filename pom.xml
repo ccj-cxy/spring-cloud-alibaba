@@ -12,6 +12,7 @@
         <module>user-provider</module>
         <module>user-consumer</module>
         <module>snk-web-common</module>
+        <module>snk-email</module>
     </modules>
     <packaging>pom</packaging>
     <!--父工程-->
@@ -102,7 +103,7 @@
         <repository>
             <id>public</id>
             <name>aliyun nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/repository/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -113,7 +114,7 @@
         <pluginRepository>
             <id>public</id>
             <name>aliyun nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/repository/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
