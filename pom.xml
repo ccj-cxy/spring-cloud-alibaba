@@ -13,6 +13,7 @@
         <module>user-consumer</module>
         <module>snk-web-common</module>
         <module>snk-email</module>
+        <module>snk-amqp</module>
     </modules>
     <packaging>pom</packaging>
     <!--父工程-->

@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>snk-email</artifactId>
-    <description>发送邮件服务</description>
-    <developers>
-        <developer>
-            <name>snk-ccj</name>
-            <email>caic.j@qq.com</email>
-        </developer>
-    </developers>
+    <artifactId>snk-amqp</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.snk</groupId>
@@ -26,6 +19,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--分布式事务-->
+        <!-- seata客户端依赖，服务端配置好后才能在客户端使用-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -43,16 +48,29 @@
             <version>2.2.2.RELEASE</version>
         </dependency>
 
-        <!--邮件服务-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>it.ozimov</groupId>
-            <artifactId>spring-boot-thymeleaf-email</artifactId>
-            <version>0.6.3</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>
