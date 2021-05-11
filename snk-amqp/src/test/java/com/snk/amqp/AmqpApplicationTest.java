@@ -34,5 +34,17 @@ public class AmqpApplicationTest {
         orderService.makeOrderTopic("1","1",12);
     }
 
+    @Test
+    void testTTL() {
+        for (int i = 0; i < 6; i++) {
+            orderService.makeOrderTtl("1","1",12);
+        }
+    }
+
+    @Test
+    void testTTLMessage() {
+        orderService.makeOrderTtlMessage("1","1",12);
+    }
+
 
 }

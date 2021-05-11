@@ -20,4 +20,5 @@ public class FanoutEmailConsumer {
     public void reviceMessage(String message) {
         log.info("email.fanout.queue---->接收到了订单消息：{}",message);
     }
+
 }
