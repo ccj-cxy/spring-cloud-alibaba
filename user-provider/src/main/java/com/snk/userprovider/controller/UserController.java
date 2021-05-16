@@ -6,6 +6,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * openfeign调用测试
+ * @author Cai.ChangJun
+ * @version 1.0.0
+ * @Date 2021/5/14 23:22
+ */
 @RestController
 @RequestMapping("user")
 public class UserController {
