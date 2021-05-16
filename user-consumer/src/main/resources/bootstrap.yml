@@ -7,10 +7,10 @@ spring:
         file-extension: yml
         name: user-consumer
         group: DEFAULT_GROUP
-        namespace: public
+        namespace:
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: public
+        namespace:
 
   application:
     name: user-consumer
@@ -34,6 +34,7 @@ user-provider: #服务名
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
 
 seata:
+  enabled: true
   client:
     support:
       spring:
@@ -43,15 +44,15 @@ seata:
     grouplist:
       default: 127.0.0.1:8091
     vgroup-mapping:
-      workflow-fescar-service-group: default
+      user-consumer-fescar-service-group: default
   registry:
     type: nacos
     nacos:
-      namespace: public
+      namespace:
   config:
     type: nacos
     nacos:
-      namespace: public
+      namespace:
       group: SEATA_GROUP
 logging:
   level:
@@ -59,4 +60,4 @@ logging:
       alibaba:
         nacos:
           client:
-            naming: warn
+            naming: error
