@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.snk.common.webRetrun.FormatResponseBodyAdvice,\
+  com.snk.common.webRetrun.WebConfiguration,\
+  com.snk.common.exception.GlobalExceptionHandler
+
