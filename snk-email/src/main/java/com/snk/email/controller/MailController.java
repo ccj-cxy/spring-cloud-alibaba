@@ -1,6 +1,6 @@
 package com.snk.email.controller;
 
-import com.snk.common.web.AjaxResult;
+import com.snk.common.webRetrun.Response;
 import com.snk.email.domain.OrdinaryEmailDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -28,15 +28,15 @@ public class MailController {
 
     @PostMapping(value = "email")
     @ResponseBody
-    public AjaxResult comment(HttpServletRequest request, HttpServletResponse response,
-                              @RequestBody OrdinaryEmailDTO dto) {
+    public Response comment(HttpServletRequest request, HttpServletResponse response,
+                            @RequestBody OrdinaryEmailDTO dto) {
         //发送邮件
         OrdinaryEmailDTO ordinaryEmailDTO = emailService.sendMail(dto);
         if (StringUtils.equals(ordinaryEmailDTO.getStatus(),"ok")) {
             log.info("邮件发送成功！发送邮箱至{}",ordinaryEmailDTO.getTo());
-            return AjaxResult.success("邮件发送成功");
+            return new Response("邮件发送成功！");
         }
         log.error("发送邮箱至{},邮件发送失败！",ordinaryEmailDTO.getTo());
-       return AjaxResult.error("邮件发送失败");
+       return new Response("邮件发送失败！");
     }
 }
