@@ -27,7 +27,12 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.TimeZone;
-
+/**
+ *
+ * @author Cai.ChangJun
+ * @version 1.0.0
+ * @Date 2021/5/18 22:11
+ */
 @Configuration
 public class JacksonConfig {
 
