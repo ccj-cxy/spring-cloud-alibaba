@@ -15,7 +15,12 @@ RabbitMQ 服务
 
 # user-consumer
 用户消费者
-
+--controller 
+    --OrderController            发送订单
+--service 
+    --impl  OrderServiceImpl     订单服务实现类  --消息可靠投递
+    OrderService                 订单服务
+    
 # user-provider
 用户生产者
 
