@@ -43,18 +43,20 @@ public class EmailService {
         }
     }
 
-    /**检测邮件信息类*/
-     private void checkMail(OrdinaryEmailDTO mailVo) {
-          if (StringUtils.isEmpty(mailVo.getTo())) {
+    /**
+     * 检测邮件信息类
+     */
+    private void checkMail(OrdinaryEmailDTO mailVo) {
+        if (StringUtils.isEmpty(mailVo.getTo())) {
             throw new RuntimeException("邮件收信人不能为空");
-          }
-          if (StringUtils.isEmpty(mailVo.getSubject())) {
+        }
+        if (StringUtils.isEmpty(mailVo.getSubject())) {
             throw new RuntimeException("邮件主题不能为空");
-          }
-          if (StringUtils.isEmpty(mailVo.getText())) {
+        }
+        if (StringUtils.isEmpty(mailVo.getText())) {
             throw new RuntimeException("邮件内容不能为空");
-          }
-     }
+        }
+    }
 
     //构建复杂邮件信息类
     private void sendMimeMail(OrdinaryEmailDTO mailVo) {
@@ -98,15 +100,15 @@ public class EmailService {
             throw new RuntimeException(e);
         }
     }
- 
+
     //保存邮件
-            private OrdinaryEmailDTO saveMail(OrdinaryEmailDTO mailVo) {
- 
+    private OrdinaryEmailDTO saveMail(OrdinaryEmailDTO mailVo) {
+
         //将邮件保存到数据库..
- 
+
         return mailVo;
     }
- 
+
     //获取邮件发信人
     public String getMailSendFrom() {
         return mailSender.getJavaMailProperties().getProperty("from");
