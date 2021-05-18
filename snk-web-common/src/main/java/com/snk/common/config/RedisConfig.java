@@ -1,6 +1,7 @@
 package com.snk.common.config;
 
 import com.snk.common.utils.RedisUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -37,9 +38,9 @@ public class RedisConfig {
      * @return RedisUtil
      */
     @Bean(name = "redisUtil")
-    public RedisUtil redisUtil(StringRedisTemplate redisTemplate) {
+    public RedisUtil redisUtil(StringRedisTemplate stringRedisTemplate) {
         RedisUtil redisUtil = new RedisUtil();
-        redisUtil.setRedisTemplate(redisTemplate);
+        redisUtil.setRedisTemplate(stringRedisTemplate);
         return redisUtil;
     }
 }
