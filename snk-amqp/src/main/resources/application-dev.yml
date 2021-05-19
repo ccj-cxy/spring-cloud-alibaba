@@ -1,0 +1,38 @@
+server:
+  port: 8100
+#配置rabbitMQ服务
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1s
+        min-idle: 0
+    timeout: 100ms
+  main:
+    ##后定义的覆盖项目中同名的bean
+    allow-bean-definition-overriding: true
+  rabbitmq:
+    username: admin
+    password: admin
+    virtual-host: /
+    host: 192.168.71.10
+    port: 5672
+    #开启ack
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual #采取手动应答
+        #concurrency: 1 # 指定最小的消费者数量
+        #max-concurrency: 1 #指定最大的消费者数量
+        retry:
+          enabled: true # 是否支持重试
+    #addresses: 192.168.71.10:5672集群配置
+    publisher-confirm-type: correlated #开启生产者消息确认 #none 禁止发布确认模式 ，correlated
+    publisher-returns: true #开启生产者消息回调
+
