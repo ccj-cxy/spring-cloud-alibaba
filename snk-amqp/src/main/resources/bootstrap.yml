@@ -15,3 +15,30 @@ spring:
   application:
     name: rabbit-service
 
+feign:
+  httpclient:
+    connection-timeout: 10000
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        #Feign的连接建立超时时间，默认为10秒
+        connectTimeout: 10000
+        #Feign的请求处理超时时间，默认为10秒
+        readTimeout: 10000
+        retryer:
+          feign:
+            #Feign使用默认的超时配置，在该类源码中可见，默认单次请求最大时长1秒，重试5次
+            Retryer: Default
+##配置负载均衡权重，不同服务都需要单独配置
+user-provider: #服务名
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000 #缺省为1000
