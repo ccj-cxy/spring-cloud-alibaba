@@ -1,6 +1,7 @@
 package com.snk.common.domain.param;
 
 import com.snk.common.constants.PageConstant;
+import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
  * @Description : 分页基础条件
  * @Date : 2021/5/19
  */
+@Data
 public class BasePageParam {
     /**页码*/
     @NotNull(message = "页码值不能为空")
