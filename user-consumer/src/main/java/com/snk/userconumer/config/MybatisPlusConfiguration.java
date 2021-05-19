@@ -75,7 +75,7 @@ public class MybatisPlusConfiguration {
     public PerformanceInterceptor performanceInterceptor() {
         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
         //ms 设置sql执行最大时间超过了不执行
-        performanceInterceptor.setMaxTime(100);
+        performanceInterceptor.setMaxTime(5000);
         //开启格式化支持
         performanceInterceptor.setFormat(true);
         return performanceInterceptor;
