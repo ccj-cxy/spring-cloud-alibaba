@@ -1,4 +1,4 @@
-package com.snk.common.domain;
+package com.snk.common.domain.dto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

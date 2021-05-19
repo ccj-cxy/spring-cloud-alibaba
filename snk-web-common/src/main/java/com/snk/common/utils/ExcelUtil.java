@@ -7,7 +7,7 @@ import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.util.StringUtils;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
-import com.snk.common.domain.EasyExcelDTO;
+import com.snk.common.domain.dto.EasyExcelDTO;
 import com.snk.common.listener.ExcelListener;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
