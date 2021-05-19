@@ -1,9 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.snk.common.webRetrun.FormatResponseBodyAdvice,\
-  com.snk.common.webRetrun.WebConfiguration,\
-  com.snk.common.exception.GlobalExceptionHandler,\
-  com.snk.common.config.thread.ThreadPoolConfig,\
-  com.snk.common.config.CorsConfig,\
-  com.snk.common.config.JacksonConfig,\
-  com.snk.common.config.RedisConfig
+  com.snk.common.CommonAdviceSelectImport
 
