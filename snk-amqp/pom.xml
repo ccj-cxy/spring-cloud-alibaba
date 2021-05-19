@@ -15,6 +15,13 @@
             <groupId>com.snk</groupId>
             <artifactId>snk-web-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <!--项目中没有数据库连接直接去除pagehelper插件-->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.github.pagehelper</groupId>
+                    <artifactId>pagehelper-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
