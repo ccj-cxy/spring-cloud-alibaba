@@ -48,7 +48,7 @@ spring:
           multi-statement-allow: true
 mybatis-plus:
   mapper-locations: classpath:/mappers/*Mapper.xml
-  typeAliasesPackage: com.snk.userconumer
+  typeAliasesPackage: com.snk.userprovider
   global-config:
     #刷新mapper 调试神器
     refresh: true

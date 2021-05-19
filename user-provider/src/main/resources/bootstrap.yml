@@ -7,11 +7,11 @@ spring:
         #refreshable-dataids: user-provider.yaml
         name: user-provider
         group: DEFAULT_GROUP
-        namespace: public
+        namespace:
         server-addr: 127.0.0.1:8848
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: public
+        namespace:
   application:
     name: user-provider
 
