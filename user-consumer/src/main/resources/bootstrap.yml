@@ -15,6 +15,8 @@ spring:
   application:
     name: user-consumer
 feign:
+  httpclient:
+    connection-timeout: 10000
   hystrix:
     enabled: true
   client:
@@ -22,17 +24,23 @@ feign:
       default:
         #Feign的连接建立超时时间，默认为10秒
         connectTimeout: 10000
-        #Feign的请求处理超时时间，默认为5秒
-        readTimeout: 5000
+        #Feign的请求处理超时时间，默认为10秒
+        readTimeout: 10000
         retryer:
           feign:
            #Feign使用默认的超时配置，在该类源码中可见，默认单次请求最大时长1秒，重试5次
             Retryer: Default
 ##配置负载均衡权重，不同服务都需要单独配置
-user-provider: #服务名
+user-consumer: #服务名
   ribbon:
     NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
-
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000 #缺省为1000
 seata:
   enabled: true
   client:
@@ -44,7 +52,7 @@ seata:
     grouplist:
       default: 127.0.0.1:8091
     vgroup-mapping:
-      user-consumer-fescar-service-group: default
+      default: ${spring.application.name}-fescar-service-group
   registry:
     type: nacos
     nacos:
@@ -60,4 +68,4 @@ logging:
       alibaba:
         nacos:
           client:
-            naming: error
+            naming: warn
