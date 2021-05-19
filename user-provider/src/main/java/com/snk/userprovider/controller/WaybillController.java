@@ -1,6 +1,11 @@
 package com.snk.userprovider.controller;
 
 
+import com.snk.userprovider.pojo.domain.Waybill;
+import com.snk.userprovider.service.WaybillService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/waybill")
 public class WaybillController {
+    @Autowired
+    private WaybillService waybillService;
+
+    @PostMapping
+    public Boolean saveWaybill(@RequestBody Waybill waybill) {
+        return waybillService.save(waybill);
+    }
 
 }
 

@@ -1,7 +1,7 @@
 package com.snk.userprovider.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.snk.userprovider.pojo.domain.WaybillDO;
+import com.snk.userprovider.pojo.domain.Waybill;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2021-05-14
  */
 @Mapper
-public interface WaybillMapper extends BaseMapper<WaybillDO> {
+public interface WaybillMapper extends BaseMapper<Waybill> {
 
 }

@@ -18,8 +18,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class WaybillDO implements Serializable {
+public class Waybill implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

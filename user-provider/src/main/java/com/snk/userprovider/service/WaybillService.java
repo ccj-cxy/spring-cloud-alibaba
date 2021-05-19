@@ -1,7 +1,7 @@
 package com.snk.userprovider.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.snk.userprovider.pojo.domain.WaybillDO;
+import com.snk.userprovider.pojo.domain.Waybill;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.snk.userprovider.pojo.domain.WaybillDO;
  * @author Cai.ChangJun
  * @since 2021-05-14
  */
-public interface WaybillService extends IService<WaybillDO> {
+public interface WaybillService extends IService<Waybill> {
 
 }
