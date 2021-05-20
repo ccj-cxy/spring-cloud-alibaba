@@ -38,7 +38,10 @@
         <commons.io.version>2.5</commons.io.version>
         <commons.fileupload.version>1.3.3</commons.fileupload.version>
         <poi.version>4.1.2</poi.version>
+        <commons-pool2.version>2.4.2</commons-pool2.version>
         <pagehelper.version>1.3.0</pagehelper.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <swagger2.models.version>1.5.21</swagger2.models.version>
     </properties>
 
     <dependencyManagement>
@@ -103,6 +106,29 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.version}</version>
+            </dependency>
+            <!--swagger2-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger2.models.version}</version>
+            </dependency>
+            <!--自定义连接池-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
