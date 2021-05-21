@@ -20,8 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.snk</groupId>
-            <artifactId>snk-web-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>snk-spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>com.github.pagehelper</groupId>
