@@ -1,0 +1,16 @@
+##微服务配置
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+#        name: snk-file
+        group: DEFAULT_GROUP
+        namespace:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace:
+
+  application:
+    name: snk-file
