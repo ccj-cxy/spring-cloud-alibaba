@@ -1,6 +1,8 @@
 package com.snk.common.domain.param;
 
 import com.snk.common.constants.PageConstant;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -15,10 +17,15 @@ import javax.validation.constraints.NotNull;
 public class BasePageParam {
     /**页码*/
     @NotNull(message = "页码值不能为空")
+    @ApiModelProperty("页码")
     private Integer pageNum;
     /**页数*/
     @NotNull(message = "页数值不能为空")
+    @ApiModelProperty("页数")
     private Integer pageSize;
+
+    @ApiModelProperty("排序")
+    private String sortOrder;
 
     /**
      * 无参构造器初始化值

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: snk-common-swagger
+Implementation-Version: 1.0.0
+Build-Jdk-spec: 1.8
+

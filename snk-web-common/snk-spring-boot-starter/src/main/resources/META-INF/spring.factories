@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.snk.core.SnkBootAutoConfiguration,\
+  com.snk.swagger.config.SwaggerAutoConfiguration,\
+  com.snk.swagger.config.SwaggerProperties
+

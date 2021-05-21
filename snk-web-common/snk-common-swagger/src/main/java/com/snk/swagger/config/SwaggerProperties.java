@@ -1,4 +1,4 @@
-package com.snk.common.config;
+package com.snk.swagger.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

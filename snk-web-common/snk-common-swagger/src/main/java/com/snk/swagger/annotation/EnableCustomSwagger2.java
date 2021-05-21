@@ -1,6 +1,6 @@
-package com.snk.common.annotation;
+package com.snk.swagger.annotation;
 
-import com.snk.common.config.SwaggerAutoConfiguration;
+import com.snk.swagger.config.SwaggerAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.Documented;
@@ -9,6 +9,7 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
 /**
  *
  * @author Cai.ChangJun
