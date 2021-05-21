@@ -15,7 +15,6 @@
         <dependency>
             <groupId>com.snk</groupId>
             <artifactId>snk-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
