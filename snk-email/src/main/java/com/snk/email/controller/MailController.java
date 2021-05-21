@@ -2,6 +2,8 @@ package com.snk.email.controller;
 
 import com.snk.common.webRetrun.Response;
 import com.snk.email.domain.OrdinaryEmailDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @Slf4j
+@Api(value = "邮件API",tags = "发送邮件对应接口-服务直接调用直接使用feign")
 public class MailController {
     @Autowired
     EmailService emailService;
 
+    @ApiOperation(value = "发送邮件")
     @PostMapping(value = "email")
     @ResponseBody
     public Response comment(HttpServletRequest request, HttpServletResponse response,
