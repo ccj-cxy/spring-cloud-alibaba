@@ -1,6 +1,6 @@
 package com.snk.userconumer;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.snk.swagger.annotation.EnableCustomSwagger2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableCustomSwagger2
 public class UserConumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserConumerApplication.class);
