@@ -1,5 +1,6 @@
 package com.snk.amqp;
 
+import com.snk.swagger.annotation.EnableCustomSwagger2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableCustomSwagger2
 public class AmqpApplication {
 
     public static void main(String[] args) {

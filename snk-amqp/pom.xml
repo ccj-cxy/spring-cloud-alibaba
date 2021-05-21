@@ -13,8 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.snk</groupId>
-            <artifactId>snk-web-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>snk-spring-boot-starter</artifactId>
             <!--项目中没有数据库连接直接去除pagehelper插件-->
             <exclusions>
                 <exclusion>
@@ -28,12 +27,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--分布式事务-->
-        <!-- seata客户端依赖，服务端配置好后才能在客户端使用-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
