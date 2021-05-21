@@ -24,7 +24,7 @@ public class BeanAddAttributesUtil {
      * @throws
      * @Date 2020/6/16 10:31
      */
-    public static Object addAttributes(Object model, Map<String,Object> map) throws  IllegalAccessException, NoSuchFieldException {
+    public static Object addAttributes(Object model, Map<String,Object> map) throws  IllegalAccessException {
         Iterator<String> iter = map.keySet().iterator();
         while(iter.hasNext()){
             String key=iter.next();
