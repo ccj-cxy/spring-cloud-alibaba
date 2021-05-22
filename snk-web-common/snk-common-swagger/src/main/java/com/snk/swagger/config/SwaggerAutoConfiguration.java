@@ -2,6 +2,7 @@ package com.snk.swagger.config;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -114,11 +115,12 @@ public class SwaggerAutoConfiguration
         securityReferences.add(new SecurityReference("Authorization", authorizationScopes));
         return securityReferences;
     }
-
+    @Value("${spring.application.name}")
+    private String appName;
     private ApiInfo apiInfo(SwaggerProperties swaggerProperties)
     {
          return new ApiInfoBuilder()
-             .title(swaggerProperties.getTitle())
+             .title(appName)
              .description(swaggerProperties.getDescription())
              .license(swaggerProperties.getLicense())
              .licenseUrl(swaggerProperties.getLicenseUrl())
