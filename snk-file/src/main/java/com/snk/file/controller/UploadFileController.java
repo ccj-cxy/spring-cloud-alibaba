@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * 文件请求处理
@@ -34,6 +35,8 @@ public class UploadFileController
 
     @Autowired
     private UploadFileService uploadFile;
+    @Autowired
+    private MinIoUtil minIoUtil;
 
     /**
      * 文件上传请求
@@ -65,8 +68,7 @@ public class UploadFileController
        uploadFile.download(httpServletRequest,httpServletResponse,bucketName,objectName);
     }
 
-    @Autowired
-    private MinIoUtil minIoUtil;
+
     @GetMapping("/getFileUrl/{bucketName}/{fileName}")
     @ApiOperation(value = "文件分享",tags = "根据文件桶，文件名称获取文件下载路径,并默认两个小时有效")
     public String getFileUrl(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
@@ -77,5 +79,12 @@ public class UploadFileController
     @ApiOperation(value = "删除文件",tags = "根据文件桶，文件名称删除文件")
     public void deleteFile(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
         minIoUtil.deleteFile(bucketName,fileName);
+    }
+
+    @GetMapping("/checkTheFileName/{bucketName}/{fileName}")
+    @ApiOperation(value = "检查文件名称",tags = "根据文件桶，文件名称检查文件名称")
+    public Boolean checkTheFileName(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
+        List<String> strings = minIoUtil.listObjectNames(bucketName);
+        return strings.contains(fileName);
     }
 }

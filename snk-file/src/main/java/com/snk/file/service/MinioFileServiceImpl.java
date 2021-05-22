@@ -39,6 +39,7 @@ public class MinioFileServiceImpl implements UploadFileService
     @Override
     public String uploadFile(MultipartFile file,String bucketName) throws Exception
     {
+        //检查是否有对应的文件桶
         if (!minIoUtil.bucketExists(bucketName)) {
             minIoUtil.createBucket(bucketName);
         }

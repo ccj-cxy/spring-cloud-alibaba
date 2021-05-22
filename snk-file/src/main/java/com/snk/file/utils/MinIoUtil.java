@@ -1,22 +1,28 @@
 package com.snk.file.utils;
 
 import io.minio.GetPresignedObjectUrlArgs;
+import io.minio.ListObjectsArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectStat;
 import io.minio.PutObjectOptions;
+import io.minio.RemoveBucketArgs;
+import io.minio.Result;
 import io.minio.http.Method;
 import io.minio.messages.Bucket;
+import io.minio.messages.Item;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -66,6 +72,49 @@ public  class MinIoUtil {
     @SneakyThrows(Exception.class)
     public  List<Bucket> getAllBuckets() {
         return minioClient.listBuckets();
+    }
+
+    /**删除存储桶*/
+    @SneakyThrows
+    public void removeBucket(String bucketName) {
+        boolean flag = bucketExists(bucketName);
+        Assert.isTrue(flag,"bucket不存在");
+        Iterable<Result<Item>> myObjects = listObjects(bucketName);
+        for (Result<Item> result : myObjects) {
+            Item item = result.get();
+            Assert.isTrue(item.size() > 0,"bucket有对象文件，删除失败");
+        }
+        // 删除存储桶，注意，只有存储桶为空时才能删除成功。
+        minioClient.removeBucket(RemoveBucketArgs.builder().bucket(bucketName).build());
+        flag = bucketExists(bucketName);
+        Assert.isTrue(flag,"bucket未成功删除");
+    }
+
+    /**列出存储桶中的所有对象名称*/
+    @SneakyThrows
+    public List<String> listObjectNames(String bucketName) {
+        List<String> listObjectNames = new ArrayList<>();
+        boolean flag = bucketExists(bucketName);
+        Assert.isTrue(flag,"bucket不存在");
+        Iterable<Result<Item>> myObjects = listObjects(bucketName);
+        for (Result<Item> result : myObjects) {
+            Item item = result.get();
+            listObjectNames.add(item.objectName());
+        }
+        return listObjectNames;
+    }
+
+    /**列出存储桶中的所有对象*/
+    @SneakyThrows
+    public Iterable<Result<Item>> listObjects(String bucketName) {
+        boolean flag = bucketExists(bucketName);
+        Assert.isTrue(flag,"bucket不存在");
+        return minioClient.listObjects(ListObjectsArgs.builder()
+                .bucket(bucketName)
+                .recursive(false)
+                .includeUserMetadata(false)
+                .useApiVersion1(false)
+                .build());
     }
 
     /**
