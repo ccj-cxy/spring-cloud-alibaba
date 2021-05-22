@@ -5,6 +5,7 @@ import com.snk.file.utils.FileUploadUtils;
 import com.snk.file.utils.MinIoUtil;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,6 +40,10 @@ public class MinioFileServiceImpl implements UploadFileService
     @Override
     public String uploadFile(MultipartFile file,String bucketName) throws Exception
     {
+        //检查是否传了bucketName,没传使用默认配置的文件桶
+        if (StringUtils.isEmpty(bucketName)) {
+            bucketName= minioConfig.getBucketName();
+        }
         //检查是否有对应的文件桶
         if (!minIoUtil.bucketExists(bucketName)) {
             minIoUtil.createBucket(bucketName);
