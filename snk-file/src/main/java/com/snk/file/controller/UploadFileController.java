@@ -4,11 +4,13 @@ import com.snk.common.utils.file.FileUtils;
 import com.snk.file.pojo.domain.UploadDTO;
 import com.snk.file.pojo.domain.UploadFile;
 import com.snk.file.service.UploadFileService;
+import com.snk.file.utils.MinIoUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,8 +59,23 @@ public class UploadFileController
     }
 
     @GetMapping("/download/{bucketName}/{objectName}")
+    @ApiOperation(value = "下载文件",tags = "根据文件桶，文件名称下载文件")
     public void download(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                          @PathVariable("bucketName") String bucketName,@PathVariable("objectName") String objectName) {
        uploadFile.download(httpServletRequest,httpServletResponse,bucketName,objectName);
+    }
+
+    @Autowired
+    private MinIoUtil minIoUtil;
+    @GetMapping("/getFileUrl/{bucketName}/{fileName}")
+    @ApiOperation(value = "文件分享",tags = "根据文件桶，文件名称获取文件下载路径,并默认两个小时有效")
+    public String getFileUrl(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
+        return minIoUtil.getFileUrl(bucketName,fileName);
+    }
+
+    @DeleteMapping("/delete/{bucketName}/{fileName}")
+    @ApiOperation(value = "删除文件",tags = "根据文件桶，文件名称删除文件")
+    public void deleteFile(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
+        minIoUtil.deleteFile(bucketName,fileName);
     }
 }

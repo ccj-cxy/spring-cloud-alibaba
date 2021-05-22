@@ -1,8 +1,10 @@
 package com.snk.file.utils;
 
+import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectStat;
 import io.minio.PutObjectOptions;
+import io.minio.http.Method;
 import io.minio.messages.Bucket;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Minio工具类
@@ -164,8 +167,51 @@ public  class MinIoUtil {
      */
     @SneakyThrows(Exception.class)
     public  String getFileUrl(String bucketName, String fileName) {
+           String url =
+                        minioClient.getPresignedObjectUrl(
+                        GetPresignedObjectUrlArgs.builder()
+                            .method(Method.GET)
+                            .bucket(bucketName)
+                            .object(fileName)
+                            .expiry(2, TimeUnit.HOURS)
+                           .build());
         return minioClient.presignedGetObject(bucketName, fileName);
     }
+
+
+    /**
+     *
+     * @Description 获取minio所有的桶
+     * @return java.util.List<io.minio.messages.Bucket>
+     **/
+    public List<Bucket> getAllBucket() throws Exception {
+        // 获取minio中所以的bucket
+        List<Bucket> buckets = minioClient.listBuckets();
+        for (Bucket bucket : buckets) {
+            log.info("bucket 名称:  {}      bucket 创建时间: {}", bucket.name(), bucket.creationDate());
+        }
+        return buckets;
+    }
+
+    /**
+     *
+     * @Description 根据指定的objectName获取下载链接，需要bucket设置可下载的策略
+     * @param objectName: 对象的名称
+     * @return java.lang.String
+     **/
+    public String getUrlByObjectName(String bucketName,String objectName) {
+        String objectUrl = null;
+        try {
+            objectUrl = minioClient.getObjectUrl(bucketName, objectName);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return objectUrl;
+    }
+
+
+
 
 
 }
