@@ -14,3 +14,5 @@ spring:
 
   application:
     name: snk-file
+server:
+  port: 8555
