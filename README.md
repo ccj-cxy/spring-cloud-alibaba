@@ -37,5 +37,9 @@ x-match = any ：表示只要有键值对匹配就能接受到消息
 # user-provider
 用户生产者
 
+# snk-file
+文件上传及下载服务，整合了minio一个可以在内网环境使用的文件服务
+minio github网址：https://github.com/minio/minio
+minio 中文文档 : http://docs.minio.org.cn/docs/master/minio-monitoring-guide
 ...
 后续摸索前行
