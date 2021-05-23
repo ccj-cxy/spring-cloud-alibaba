@@ -21,6 +21,7 @@
         <module>snk-common-core</module>
         <module>snk-spring-boot-starter</module>
         <module>snk-common-swagger</module>
+        <module>snk-common-redis</module>
     </modules>
 
     <dependencies>

@@ -1,6 +1,6 @@
-package com.snk.common.config;
+package com.snk.redis.config;
 
-import com.snk.common.utils.RedisUtil;
+import com.snk.redis.utils.RedisUtil;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;

@@ -9,24 +9,26 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>snk-spring-boot-starter</artifactId>
-    <description>springboot自动装配</description>
+    <artifactId>snk-common-redis</artifactId>
+
+    <description>redis相关整合</description>
+
     <dependencies>
+
         <dependency>
-            <groupId>com.snk</groupId>
-            <artifactId>snk-common-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.snk</groupId>
-            <artifactId>snk-common-swagger</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.snk</groupId>
-            <artifactId>snk-common-redis</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>
