@@ -1,6 +1,6 @@
 package com.snk.userconumer;
 
-import com.snk.common.utils.RedisUtil;
+import com.snk.redis.utils.RedisUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
