@@ -64,6 +64,7 @@ seata:
       group: SEATA_GROUP
 logging:
   level:
+    com.alibaba.nacos.client.config.impl: WARN
     com:
       alibaba:
         nacos:
