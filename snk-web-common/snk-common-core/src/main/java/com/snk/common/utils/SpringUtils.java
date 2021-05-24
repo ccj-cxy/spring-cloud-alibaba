@@ -1,7 +1,6 @@
 package com.snk.common.utils;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.excel.util.StringUtils;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -9,7 +8,11 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * spring工具类 方便在非spring管理环境中获取bean
@@ -143,5 +146,38 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     {
         final String[] activeProfiles = getActiveProfiles();
         return StrUtil.isNotEmpty(activeProfiles.toString()) ? activeProfiles[0] : null;
+    }
+
+    private static boolean addCallback = true;
+    private static final List<CallBack> CALL_BACKS = new ArrayList<>();
+    /**
+     * 针对 某些初始化方法，在SpringContextHolder 未初始化时 提交回调方法。
+     * 在SpringContextHolder 初始化后，进行回调使用
+     *
+     * @param callBack 回调函数
+     */
+    public synchronized static void addCallBacks(CallBack callBack) {
+        if (addCallback) {
+            SpringUtils.CALL_BACKS.add(callBack);
+        } else {
+            callBack.executor();
+        }
+    }
+
+
+    /**
+     * 获取SpringBoot 配置信息
+     *
+     * @param property     属性key
+     * @param defaultValue 默认值
+     * @param requiredType 返回类型
+     * @return /
+     */
+    public static <T> T getProperties(String property, T defaultValue, Class<T> requiredType) {
+        T result = defaultValue;
+        try {
+            result = getBean(Environment.class).getProperty(property, requiredType);
+        } catch (Exception ignored) {}
+        return result;
     }
 }
