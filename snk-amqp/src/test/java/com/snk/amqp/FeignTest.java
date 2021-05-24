@@ -1,6 +1,6 @@
 package com.snk.amqp;
 
-import com.snk.amqp.feign.UserConSumerService;
+import com.snk.amqp.feign.UserConsumerService;
 import com.snk.amqp.pojo.domain.BrokerMessageLogDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class FeignTest {
 
     @Autowired
-    UserConSumerService userConSumerService;
+    UserConsumerService userConsumerService;
 
     @Test
     void test() {
-        Boolean aBoolean = userConSumerService.modifyMessageStatus(new BrokerMessageLogDTO().setMessageId("149732447200874496").setStatus("1"));
+        Boolean aBoolean = userConsumerService.modifyMessageStatus(new BrokerMessageLogDTO().setMessageId("149732447200874496").setStatus("1"));
     }
 }
