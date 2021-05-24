@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
  * @Date : 2021/5/19
  */
 @Data
+@ApiModel("分页参数")
 public class BasePageParam {
     /**页码*/
     @NotNull(message = "页码值不能为空")
