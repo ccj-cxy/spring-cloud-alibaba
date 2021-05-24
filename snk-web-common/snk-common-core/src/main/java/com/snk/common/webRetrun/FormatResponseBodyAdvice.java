@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @version 1.0.0
  * @Date 2021/5/17 22:50
  */
-@ControllerAdvice(basePackages = "com.snk.*.controller")
+@ControllerAdvice(basePackages = "com.snk")
 public class FormatResponseBodyAdvice implements ResponseBodyAdvice {
     private static Logger logger = LoggerFactory.getLogger(FormatResponseBodyAdvice.class);
 
