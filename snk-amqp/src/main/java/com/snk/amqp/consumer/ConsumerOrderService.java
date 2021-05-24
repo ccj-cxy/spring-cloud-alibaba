@@ -3,7 +3,7 @@ package com.snk.amqp.consumer;
 import cn.hutool.json.JSONUtil;
 import com.rabbitmq.client.Channel;
 import com.snk.amqp.config.order.OrderFanoutConfig;
-import com.snk.amqp.feign.UserConSumerService;
+import com.snk.amqp.feign.UserConsumerService;
 import com.snk.amqp.pojo.domain.BrokerMessageLogDTO;
 import com.snk.amqp.pojo.domain.OrderDTO;
 import com.snk.redis.utils.RedisUtil;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class ConsumerOrderService {
     @Autowired
-    private UserConSumerService userConSumerService;
+    private UserConsumerService userConsumerService;
 
     @Autowired
     RedisUtil redisUtil;
@@ -53,7 +53,7 @@ public class ConsumerOrderService {
                 //确认接收修改冗余记录
                 BrokerMessageLogDTO brokerMessageLogDTO = new BrokerMessageLogDTO().setMessageId(orderDTO.getOrderId())
                         .setStatus("3");
-                userConSumerService.modifyMessageStatus(brokerMessageLogDTO);
+                userConsumerService.modifyMessageStatus(brokerMessageLogDTO);
                 log.info("消费消息{}",orderDTO);
             }
         } catch (IOException e) {

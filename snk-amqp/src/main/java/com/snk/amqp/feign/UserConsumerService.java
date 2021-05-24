@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @version 1.0.0
  * @Date 2021/5/18 16:42
  */
-@FeignClient(value = "user-consumer",fallback = UserConSumerServiceFallback.class)
+@FeignClient(value = "user-consumer",fallbackFactory = UserConsumerServiceFallback.class)
 @Component
-public interface UserConSumerService {
+public interface UserConsumerService {
     /**
      * 修改消息记录表状态
      * @author Cai.ChangJun

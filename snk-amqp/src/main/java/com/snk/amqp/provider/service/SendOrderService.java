@@ -1,7 +1,7 @@
 package com.snk.amqp.provider.service;
 
 import cn.hutool.json.JSONUtil;
-import com.snk.amqp.feign.UserConSumerService;
+import com.snk.amqp.feign.UserConsumerService;
 import com.snk.amqp.pojo.domain.BrokerMessageLogDTO;
 import com.snk.amqp.pojo.domain.OrderDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * @author :Cai.ChangJun
@@ -27,7 +26,7 @@ public class SendOrderService {
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
-    private UserConSumerService userConSumerService;
+    private UserConsumerService userConsumerService;
 
     /**在构造函数调用之后处理*/
     @PostConstruct
@@ -43,19 +42,19 @@ public class SendOrderService {
                     Date date = new Date();
                     BrokerMessageLogDTO brokerMessageLogDTO = new BrokerMessageLogDTO().setMessageId(orderId)
                             .setStatus("2").setNextRetry(new Date(date.getTime() + 10 * 60 * 1000));
-                    userConSumerService.modifyMessageStatus(brokerMessageLogDTO);
+                    userConsumerService.modifyMessageStatus(brokerMessageLogDTO);
                 }
                 //TODO 消息应答成功修改消息记录表 try catch 修改失败耶记录
                 try {
                     BrokerMessageLogDTO brokerMessageLogDTO = new BrokerMessageLogDTO().setMessageId(orderId)
                             .setStatus("1");
-                    userConSumerService.modifyMessageStatus(brokerMessageLogDTO);
+                    userConsumerService.modifyMessageStatus(brokerMessageLogDTO);
                 }catch (Exception e){
                     log.error("消息应答失败，orderId是：{}",orderId);
                     Date date = new Date();
                     BrokerMessageLogDTO brokerMessageLogDTO = new BrokerMessageLogDTO().setMessageId(orderId)
                             .setStatus("2").setNextRetry(new Date(date.getTime() + 10 * 60 * 1000));
-                    userConSumerService.modifyMessageStatus(brokerMessageLogDTO);
+                    userConsumerService.modifyMessageStatus(brokerMessageLogDTO);
                 }
             }
         });
