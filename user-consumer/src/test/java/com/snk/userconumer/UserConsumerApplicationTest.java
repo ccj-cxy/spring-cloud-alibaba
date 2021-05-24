@@ -1,5 +1,6 @@
 package com.snk.userconumer;
 
+import com.snk.common.utils.IpUtil;
 import com.snk.redis.utils.RedisUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,10 @@ public class UserConsumerApplicationTest {
     @Test
     void test1() {
         System.out.println(redisUtil);
+    }
+
+    @Test
+    void ipTest() {
+        System.out.println(IpUtil.getCityInfo("78.142.192.245"));
     }
 }
