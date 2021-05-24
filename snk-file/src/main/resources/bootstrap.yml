@@ -14,5 +14,7 @@ spring:
 
   application:
     name: snk-file
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 8555
