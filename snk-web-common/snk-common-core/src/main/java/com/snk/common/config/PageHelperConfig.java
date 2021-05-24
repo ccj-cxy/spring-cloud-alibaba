@@ -34,7 +34,7 @@ public class PageHelperConfig {
     private String params;
 
 
-    @ConditionalOnMissingBean
+    @Bean("pageHelperUtil")
     public PageHelper getPageHelper(){
         log.info("检测到项目中含有pageHelper依赖，自动配置pageHelper对象");
         PageHelper pageHelper=new PageHelper();
