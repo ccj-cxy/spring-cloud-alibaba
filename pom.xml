@@ -15,6 +15,7 @@
         <module>snk-email</module>
         <module>snk-amqp</module>
         <module>snk-file</module>
+        <module>snk-websocket</module>
     </modules>
     <packaging>pom</packaging>
     <!--父工程-->
