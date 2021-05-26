@@ -1,5 +1,7 @@
 package com.snk.common.utils;
 
+import org.springframework.util.Base64Utils;
+
 import java.util.Base64;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Base64;
  * @Description :
  * @Date : 2021/5/26
  */
-public class Base64Util {
+public class Base64Util extends Base64Utils {
 
     /**
      * 解密
