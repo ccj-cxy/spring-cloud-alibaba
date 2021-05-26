@@ -22,6 +22,7 @@
         <module>snk-spring-boot-starter</module>
         <module>snk-common-swagger</module>
         <module>snk-common-redis</module>
+        <module>snk-common-jwt</module>
     </modules>
 
     <dependencies>
