@@ -2,15 +2,21 @@ package com.snk.userconumer.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.snk.common.exception.BusinessException;
 import com.snk.userconumer.pojo.domain.BrokerMessageLog;
 import com.snk.userconumer.service.BrokerMessageLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * <p>
@@ -29,11 +35,14 @@ public class BrokerMessageLogController {
 
     /**根据消息id修改消息冗余表状态*/
     @PostMapping("/modifyMessageStatus")
-    public Boolean modifyMessageStatus(@RequestBody BrokerMessageLog brokerMessageLog) {
+    public Boolean modifyMessageStatus(@RequestBody @Validated BrokerMessageLog brokerMessageLog) {
         QueryWrapper<BrokerMessageLog> brokerMessageLogQueryWrapper = new QueryWrapper<>();
         brokerMessageLogQueryWrapper.eq("message_id",brokerMessageLog.getMessageId());
-        BrokerMessageLog one = brokerMessageLogService.getOne(brokerMessageLogQueryWrapper);
-        if ("3".equalsIgnoreCase(one.getStatus())) {
+        Optional<BrokerMessageLog> one = Optional.ofNullable(brokerMessageLogService.getOne(brokerMessageLogQueryWrapper));
+        if (!one.isPresent()) {
+            throw new BusinessException("未查询到消息");
+        }
+        if ("3".equalsIgnoreCase(one.get().getStatus())) {
             return true;
         }
         return brokerMessageLogService.update(brokerMessageLog,brokerMessageLogQueryWrapper);
