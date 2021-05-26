@@ -16,7 +16,7 @@ public class Base64Util {
      * @param data 加密数据
      * @return
      */
-    private static String base64Decoder(String data) {
+    public static String base64Decoder(String data) {
         try {
             byte[] orgAndUser = data.getBytes();
             // BASE64解密
@@ -34,7 +34,7 @@ public class Base64Util {
      * 加密
      * @return
      */
-    private static String base64Encoder(String encoderData) {
+    public static String base64Encoder(String encoderData) {
         try {
             Base64.Encoder encoder = Base64.getEncoder();
             byte[] data = encoder.encode(encoderData.getBytes());
