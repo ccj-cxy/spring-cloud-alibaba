@@ -1,15 +1,18 @@
 package com.snk.common.webRetrun;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
+@ApiModel("返回包装")
 public class Response<T> {
-
+    @ApiModelProperty("系统响应值")
     private int code = HttpStatus.OK.value();
-
+    @ApiModelProperty("消息")
     private String msg = "操作成功";
 
     private T data;
