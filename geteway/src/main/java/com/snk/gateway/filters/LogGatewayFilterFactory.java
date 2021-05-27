@@ -1,9 +1,3 @@
-/**
- * Copyright  HuaTu
- * 安徽华图信息科技有限公司
- * http://www.myhuatu.com/
- * All rights reserved.
- */
 package com.snk.gateway.filters;
 
 import lombok.Data;

@@ -1,0 +1,18 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1s
+        min-idle: 0
+    timeout: 100ms
+  main:
+    ##后定义的覆盖项目中同名的bean
+    allow-bean-definition-overriding: true
+ignore:
+  #白名单 些全路径加上项目名
+  whites: /snk-auth/user/login,/snk-auth/user/registered
