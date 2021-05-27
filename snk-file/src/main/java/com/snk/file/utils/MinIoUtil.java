@@ -1,7 +1,9 @@
 package com.snk.file.utils;
 
+import io.minio.BucketExistsArgs;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.ListObjectsArgs;
+import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectStat;
 import io.minio.PutObjectOptions;
@@ -45,7 +47,7 @@ public  class MinIoUtil {
      */
     @SneakyThrows(Exception.class)
     public  boolean bucketExists(String bucketName) {
-        return minioClient.bucketExists(bucketName);
+        return minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
     }
 
     /**
@@ -57,7 +59,7 @@ public  class MinIoUtil {
      */
     @SneakyThrows(Exception.class)
     public  void createBucket(String bucketName) {
-        boolean isExist = minioClient.bucketExists(bucketName);
+        boolean isExist = bucketExists(bucketName);
         if (!isExist) {
             minioClient.makeBucket(bucketName);
         }
@@ -224,7 +226,12 @@ public  class MinIoUtil {
                             .object(fileName)
                             .expiry(2, TimeUnit.HOURS)
                            .build());
-        return minioClient.presignedGetObject(bucketName, fileName);
+        return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
+                            .method(Method.GET)
+                            .bucket(bucketName)
+                            .object(fileName)
+                            .expiry(2, TimeUnit.HOURS)
+                            .build());
     }
 
 

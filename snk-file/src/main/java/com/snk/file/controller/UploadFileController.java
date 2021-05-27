@@ -57,12 +57,12 @@ public class UploadFileController
         catch (Exception e)
         {
             log.error("上传文件失败", e);
-            return null;
+            throw new RuntimeException("上传文件失败");
         }
     }
 
     @GetMapping("/download/{bucketName}/{objectName}")
-    @ApiOperation(value = "下载文件",tags = "根据文件桶，文件名称下载文件")
+    @ApiOperation(value = "下载文件",notes = "根据文件桶，文件名称下载文件")
     public void download(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                          @PathVariable("bucketName") String bucketName,@PathVariable("objectName") String objectName) {
        uploadFile.download(httpServletRequest,httpServletResponse,bucketName,objectName);
@@ -70,19 +70,19 @@ public class UploadFileController
 
 
     @GetMapping("/getFileUrl/{bucketName}/{fileName}")
-    @ApiOperation(value = "文件分享",tags = "根据文件桶，文件名称获取文件下载路径,并默认两个小时有效")
+    @ApiOperation(value = "文件分享",notes = "根据文件桶，文件名称获取文件下载路径,并默认两个小时有效")
     public String getFileUrl(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
         return minIoUtil.getFileUrl(bucketName,fileName);
     }
 
     @DeleteMapping("/delete/{bucketName}/{fileName}")
-    @ApiOperation(value = "删除文件",tags = "根据文件桶，文件名称删除文件")
+    @ApiOperation(value = "删除文件",notes = "根据文件桶，文件名称删除文件")
     public void deleteFile(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
         minIoUtil.deleteFile(bucketName,fileName);
     }
 
     @GetMapping("/checkTheFileName/{bucketName}/{fileName}")
-    @ApiOperation(value = "检查文件名称",tags = "根据文件桶，文件名称检查文件名称")
+    @ApiOperation(value = "检查文件名称",notes = "根据文件桶，文件名称检查文件名称")
     public Boolean checkTheFileName(@PathVariable("bucketName")String bucketName,@PathVariable("fileName") String fileName) {
         List<String> strings = minIoUtil.listObjectNames(bucketName);
         return strings.contains(fileName);
