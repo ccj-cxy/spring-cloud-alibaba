@@ -16,5 +16,10 @@ spring:
     name: snk-file
   main:
     allow-bean-definition-overriding: true
+  #设置上传文件大小
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
 server:
   port: 8555
