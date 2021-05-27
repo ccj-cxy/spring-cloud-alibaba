@@ -83,7 +83,7 @@ public class SwaggerAutoConfiguration
     private List<ApiKey> securitySchemes()
     {
         List<ApiKey> apiKeyList = new ArrayList<ApiKey>();
-        apiKeyList.add(new ApiKey("Authorization", "Authorization", "header"));
+        apiKeyList.add(new ApiKey("token", "token", "header"));
         return apiKeyList;
     }
 
@@ -112,7 +112,7 @@ public class SwaggerAutoConfiguration
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
         List<SecurityReference> securityReferences = new ArrayList<>();
-        securityReferences.add(new SecurityReference("Authorization", authorizationScopes));
+        securityReferences.add(new SecurityReference("token", authorizationScopes));
         return securityReferences;
     }
     @Value("${spring.application.name}")
