@@ -1,14 +1,9 @@
 package com.snk.auth.pojo.dto;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.snk.auth.pojo.domain.PublicUser;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @author :Cai.ChangJun
