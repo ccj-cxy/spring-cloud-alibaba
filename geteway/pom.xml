@@ -12,6 +12,18 @@
     <artifactId>geteway</artifactId>
 
     <dependencies>
+        <!--redis依赖-->
+        <dependency>
+            <groupId>com.snk</groupId>
+            <artifactId>snk-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!--jwt权鉴验证依赖-->
+        <dependency>
+            <groupId>com.snk</groupId>
+            <artifactId>snk-common-jwt</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!--gateway 注意，此模块不能引入starter-web-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -49,10 +61,5 @@
            <groupId>com.alibaba.cloud</groupId>
            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
     </dependencies>
 </project>
