@@ -15,4 +15,7 @@ spring:
     allow-bean-definition-overriding: true
 ignore:
   #白名单 些全路径加上项目名
-  whites: /snk-auth/user/login,/snk-auth/user/registered
+  whites: /snk-auth/user/login,
+          /snk-auth/user/registered,
+          /**/v2/api-docs
+

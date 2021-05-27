@@ -51,6 +51,16 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+
         <!--限流-->
         <!--<dependency>
             <groupId>com.alibaba.csp</groupId>
