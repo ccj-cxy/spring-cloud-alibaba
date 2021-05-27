@@ -3,6 +3,7 @@ package com.snk.gateway.filters;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.client.utils.JSONUtils;
 import com.snk.gateway.config.IgnoreWhiteProperties;
+import com.snk.gateway.pojo.Response;
 import com.snk.gateway.pojo.dto.UserDTO;
 import com.snk.gateway.utils.StringUtil;
 import com.snk.jwt.constants.TokenConstant;
@@ -99,11 +100,11 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         return chain.filter(exchange);
     }
 
-    public Mono<Void> authenticationError(ServerHttpResponse response,String tip) {
-        JSONObject message = new JSONObject();
-        message.put("code", HttpStatus.UNAUTHORIZED.value());
-        message.put("message", tip);
-        byte[] bits = message.toString().getBytes(StandardCharsets.UTF_8);
+    @SneakyThrows
+    public Mono<Void> authenticationError(ServerHttpResponse response, String tip) {
+        Response<Object> objectResponse = new Response<>(HttpStatus.UNAUTHORIZED.value(), tip);
+        String json = JSONUtils.serializeObject(objectResponse);
+        byte[] bits = json.getBytes(StandardCharsets.UTF_8);
         DataBuffer buffer = response.bufferFactory().wrap(bits);
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
         response.getHeaders().add("Content-Type", "text/json;charset=UTF-8");

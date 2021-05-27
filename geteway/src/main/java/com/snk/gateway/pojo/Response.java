@@ -2,10 +2,12 @@ package com.snk.gateway.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
+@ToString
 public class Response<T> {
 
     private int code = HttpStatus.OK.value();
