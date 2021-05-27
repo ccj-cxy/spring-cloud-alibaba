@@ -218,14 +218,6 @@ public  class MinIoUtil {
      */
     @SneakyThrows(Exception.class)
     public  String getFileUrl(String bucketName, String fileName) {
-           String url =
-                        minioClient.getPresignedObjectUrl(
-                        GetPresignedObjectUrlArgs.builder()
-                            .method(Method.GET)
-                            .bucket(bucketName)
-                            .object(fileName)
-                            .expiry(2, TimeUnit.HOURS)
-                           .build());
         return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
                             .method(Method.GET)
                             .bucket(bucketName)
