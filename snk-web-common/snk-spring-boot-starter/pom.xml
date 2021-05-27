@@ -17,11 +17,6 @@
             <artifactId>snk-common-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.snk</groupId>
-            <artifactId>snk-common-swagger</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
 
         <dependency>
             <groupId>com.snk</groupId>
