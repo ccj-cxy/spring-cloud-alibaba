@@ -16,6 +16,7 @@
         <module>snk-amqp</module>
         <module>snk-file</module>
         <module>snk-websocket</module>
+        <module>snk-auth</module>
     </modules>
     <packaging>pom</packaging>
     <!--父工程-->
@@ -174,10 +175,20 @@
         <repository>
             <id>public</id>
             <name>aliyun nexus</name>
-            <url>https://maven.aliyun.com/repository/public/</url>
+            <url>https://maven.aliyun.com/repository/public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
+        </repository>
+        <repository>
+            <id>spring</id>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
