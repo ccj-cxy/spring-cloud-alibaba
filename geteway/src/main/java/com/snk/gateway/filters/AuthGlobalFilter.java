@@ -1,6 +1,5 @@
 package com.snk.gateway.filters;
 
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.client.utils.JSONUtils;
 import com.snk.gateway.config.IgnoreWhiteProperties;
 import com.snk.gateway.pojo.Response;
@@ -73,14 +72,11 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
             ServerHttpRequest request = exchange.getRequest().mutate().header("user", userStr).build();
             exchange = exchange.mutate().request(request).build();
             //确认下缓存，未过期 续时 过期重新缓存
-            if (StringUtil.isNotEmpty(redisUtil.get(cacheKey))) {
-                //不为空 增加过期时间
-                redisUtil.expire(cacheKey,30,TimeUnit.MINUTES);
-            }else {
+            if (StringUtil.isEmpty(redisUtil.get(cacheKey))) {
                 //过期 重新设置缓存
                 redisUtil.set(cacheKey,userStr);
-                redisUtil.expire(cacheKey,30,TimeUnit.MINUTES);
             }
+            redisUtil.expire(cacheKey,30,TimeUnit.MINUTES);
         } catch (Exception e) {
             String user = redisUtil.get(cacheKey);
             if (StringUtil.isNotEmpty(user)) {
