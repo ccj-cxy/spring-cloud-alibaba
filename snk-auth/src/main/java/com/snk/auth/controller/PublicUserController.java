@@ -35,7 +35,7 @@ public class PublicUserController {
     private PublicUserService publicUserService;
 
     @PostMapping("/registered")
-    @ApiOperation(value = "注册",tags = "在系统中注册信息并发送邮件")
+    @ApiOperation(value = "注册",notes = "在系统中注册信息并发送邮件")
     public Response<String> registered(@RequestBody PublicUser publicUser) {
         log.info("注册用户信息{}",publicUser);
         publicUserService.save(publicUser);
@@ -44,7 +44,7 @@ public class PublicUserController {
 
 
     @GetMapping("/login")
-    @ApiOperation(value = "登录",tags = "用户登录系统，暂时get调用，并且显示传参后面修改为post隐式传参")
+    @ApiOperation(value = "登录",notes = "用户登录系统，暂时get调用，并且显示传参后面修改为post隐式传参")
     public Response<UserDTO> login(@RequestParam("username") String username,@RequestParam("password") String password) {
         log.info("用户登录：{}",username);
         UserDTO login = publicUserService.login(username, password);
