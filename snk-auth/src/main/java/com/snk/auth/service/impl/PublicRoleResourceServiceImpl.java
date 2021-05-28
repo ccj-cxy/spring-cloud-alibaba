@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.snk.common.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,7 @@ public class PublicRoleResourceServiceImpl extends ServiceImpl<PublicRoleResourc
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void addRoleResource(RoleLinkResourceDTO roleLinkResource) {
         //先清空当前角色下所有资源
         QueryWrapper<PublicRoleResource> roleResourceQueryWrapper = new QueryWrapper<>();

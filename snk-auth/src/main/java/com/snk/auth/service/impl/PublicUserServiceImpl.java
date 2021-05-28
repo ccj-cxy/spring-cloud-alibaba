@@ -16,6 +16,7 @@ import com.snk.jwt.utils.JWTUtil;
 import com.snk.redis.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.Set;
@@ -44,6 +45,7 @@ public class PublicUserServiceImpl extends ServiceImpl<PublicUserMapper, PublicU
     private JWTUtil jwtUtil;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean save(PublicUser entity) {
         entity.setPassword(Base64Util.encodeToString(entity.getPassword().getBytes()));
         //TODO 获取用户邮箱发送邮件 在未实现 可以直接调用邮件服务

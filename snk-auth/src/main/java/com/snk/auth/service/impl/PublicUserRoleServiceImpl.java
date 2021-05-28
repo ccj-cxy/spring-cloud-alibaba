@@ -8,6 +8,7 @@ import com.snk.auth.pojo.dto.UserLinkRoleDTO;
 import com.snk.auth.service.PublicUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class PublicUserRoleServiceImpl extends ServiceImpl<PublicUserRoleMapper,
     private PublicUserRoleMapper publicUserRoleMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void addUserLinkRole(UserLinkRoleDTO userLinkRoleDTO) {
         QueryWrapper<PublicUserRole> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(PublicUserRole::getUserId,userLinkRoleDTO.getUserId());
