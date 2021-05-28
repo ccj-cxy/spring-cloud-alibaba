@@ -16,9 +16,11 @@
             <groupId>com.snk</groupId>
             <artifactId>snk-spring-boot-starter</artifactId>
         </dependency>
+        <!--jwt权鉴验证依赖 测试使用 如果项目不需要就可以删除-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.snk</groupId>
+            <artifactId>snk-common-jwt</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!--分布式事务-->
