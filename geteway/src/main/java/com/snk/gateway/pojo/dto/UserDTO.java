@@ -44,12 +44,12 @@ public class UserDTO {
     /**
      * 状态 0:禁用 1:启用
      */
-    private Boolean enabled;
+    private Integer enabled;
 
     /**
      * 0:系统管理员 1:站点管理员 2:普通用户
      */
-    private Boolean type;
+    private Integer type;
 
     /**
      * 创建时间
