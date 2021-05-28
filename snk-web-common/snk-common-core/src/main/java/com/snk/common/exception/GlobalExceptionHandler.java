@@ -86,4 +86,10 @@ public class GlobalExceptionHandler {
         return new Response(403, StringUtils.isNotBlank(message.get())?message:exception.getMessage());
     }
 
+    @ExceptionHandler(LoginException.class)
+    public Response loginExceptionHandler(LoginException exception){
+        log.error(exception.getMessage());
+        return new Response(400,exception.getMessage());
+    }
+
 }
