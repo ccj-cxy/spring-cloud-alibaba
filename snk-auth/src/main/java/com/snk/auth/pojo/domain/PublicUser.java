@@ -1,13 +1,9 @@
 package com.snk.auth.pojo.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
-import java.util.Date;
-
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -17,6 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -85,13 +83,13 @@ public class PublicUser implements Serializable {
      * 状态 0:禁用 1:启用
      */
     @ApiModelProperty("状态 0:禁用 1:启用")
-    private Boolean enabled;
+    private Integer enabled;
 
     /**
      * 0:系统管理员 1:站点管理员 2:普通用户
      */
     @ApiModelProperty("0:系统管理员 1:站点管理员 2:普通用户")
-    private Boolean type;
+    private Integer type;
 
     /**
      * 创建时间

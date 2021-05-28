@@ -42,10 +42,10 @@ public class UserDTO implements Serializable {
     private String       email;
 
     @ApiModelProperty("状态 0:禁用 1:启用")
-    private Boolean      enabled;
+    private Integer      enabled;
 
     @ApiModelProperty("0:系统管理员 1:站点管理员 2:普通用户")
-    private Boolean      type;
+    private Integer      type;
 
     @ApiModelProperty("站点id")
     private Integer      webId;
