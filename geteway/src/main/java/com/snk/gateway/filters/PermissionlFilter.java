@@ -9,7 +9,6 @@ import com.snk.gateway.pojo.dto.ResourceDTO;
 import com.snk.gateway.pojo.dto.UserDTO;
 import com.snk.gateway.utils.StringUtil;
 import com.snk.jwt.constants.TokenConstant;
-import com.snk.jwt.utils.JWTUtil;
 import com.snk.redis.utils.RedisUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -43,8 +42,6 @@ public class PermissionlFilter implements GlobalFilter, Ordered {
     /**注入redis工具类操作缓存实现登录认证*/
     @Autowired
     RedisUtil redisUtil;
-    @Autowired
-    JWTUtil jwtUtil;
     /**排除过滤的 uri 地址*/
     @Autowired
     private IgnoreWhiteProperties ignoreWhite;
@@ -63,7 +60,6 @@ public class PermissionlFilter implements GlobalFilter, Ordered {
         //缓存key
         String cacheKey = TokenConstant.CACHE_TOKEN_KEY+token;
         ServerHttpResponse response = exchange.getResponse();
-
             String user = redisUtil.get(cacheKey);
             if (StringUtil.isNotEmpty(user)) {
                 //复杂json处理
