@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.Set;
 
 /**
  * @author :Cai.ChangJun
@@ -19,11 +20,6 @@ public class UserDTO {
      * 用户名
      */
     private String name;
-
-    /**
-     * 密码
-     */
-    private String password;
 
     /**
      * 昵称
@@ -74,4 +70,8 @@ public class UserDTO {
      * 令牌
      */
     private String token;
+
+    private Set<Integer> roleIds;
+
+    private Set<ResourceDTO> resources;
 }
