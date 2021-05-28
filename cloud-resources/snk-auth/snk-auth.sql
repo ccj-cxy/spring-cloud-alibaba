@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 28/05/2021 17:42:46
+ Date: 28/05/2021 20:23:29
 */
 
 SET NAMES utf8mb4;
@@ -38,6 +38,8 @@ CREATE TABLE `public_resource`  (
 INSERT INTO `public_resource` VALUES (1, '系统', 0, '/snk', '/snk', '', 0);
 INSERT INTO `public_resource` VALUES (2, 'auth服务', 1, '/snk-auth', '/snk-auth', '', 1);
 INSERT INTO `public_resource` VALUES (3, 'file服务', 1, '/snk-file', '/snk-file', NULL, 1);
+INSERT INTO `public_resource` VALUES (4, 'consumer服务', 1, '/user-consumer', '/user-consumer', NULL, 1);
+INSERT INTO `public_resource` VALUES (5, '获取所有订单', 2, '/user-consumer/order/getPage', '/user-consumer/order/getPage', NULL, 4);
 
 -- ----------------------------
 -- Table structure for public_role
@@ -80,9 +82,11 @@ CREATE TABLE `public_role_resource`  (
 -- ----------------------------
 -- Records of public_role_resource
 -- ----------------------------
-INSERT INTO `public_role_resource` VALUES (1, 1, 1);
-INSERT INTO `public_role_resource` VALUES (2, 1, 2);
-INSERT INTO `public_role_resource` VALUES (3, 1, 3);
+INSERT INTO `public_role_resource` VALUES (5, 1, 1);
+INSERT INTO `public_role_resource` VALUES (6, 1, 2);
+INSERT INTO `public_role_resource` VALUES (7, 1, 3);
+INSERT INTO `public_role_resource` VALUES (8, 1, 4);
+INSERT INTO `public_role_resource` VALUES (9, 1, 5);
 
 -- ----------------------------
 -- Table structure for public_user
@@ -113,7 +117,7 @@ CREATE TABLE `public_user`  (
 -- ----------------------------
 -- Records of public_user
 -- ----------------------------
-INSERT INTO `public_user` VALUES (1, 'zs', 'MTIz', 'zs', '123', '123', '123', 1, 1, '2021-05-26 22:20:02', '2021-05-26 22:20:02', 0);
+INSERT INTO `public_user` VALUES (1, 'zs', 'MTIz', 'zs', '123', '123', '123', 1, 0, '2021-05-26 22:20:02', '2021-05-26 22:20:02', 0);
 INSERT INTO `public_user` VALUES (2, 'lisi', 'MTIz', 'lisi', '123', '123', '123', 1, 1, '2021-05-26 22:24:39', '2021-05-26 22:24:39', 0);
 INSERT INTO `public_user` VALUES (3, 'wangwu', 'MTIzNDU2', 'wangwu', '123', '123', '123', 1, 1, '2021-05-26 22:31:34', '2021-05-26 22:31:34', 0);
 
