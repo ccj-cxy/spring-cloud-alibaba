@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //开启事务
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.snk.userconumer.dao")
+@MapperScan("com.snk.auth.dao")
 public class MybatisPlusConfiguration {
 
     /*
