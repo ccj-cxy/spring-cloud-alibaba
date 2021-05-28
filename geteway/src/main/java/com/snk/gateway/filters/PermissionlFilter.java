@@ -70,7 +70,7 @@ public class PermissionlFilter implements GlobalFilter, Ordered {
                 Set<ResourceDTO> resources = userDTO.getResources();
                 Set<String> permissions = resources.stream().map(ResourceDTO::getPermissionName).collect(Collectors.toSet());
                 //系统管理员可以绕过系统权鉴
-                if (!permissions.contains(url) && (userDTO.getType() != 0)) {
+                if ( (userDTO.getType() != 0) && !permissions.contains(url) ) {
                     response.setStatusCode(HttpStatus.FORBIDDEN);
                     return authenticationError(response,"无权限访问改接口",HttpStatus.FORBIDDEN.value());
                 }
