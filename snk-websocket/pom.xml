@@ -21,9 +21,17 @@
                     <groupId>com.github.pagehelper</groupId>
                     <artifactId>pagehelper-spring-boot-starter</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-undertow</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
-
+        <!--将undertow web容器切换回tomcat否则启动失败去除tomcat后会导致websocket的依赖包缺失-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
         <!--添加websocket依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
