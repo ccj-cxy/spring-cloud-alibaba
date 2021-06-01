@@ -3,7 +3,7 @@ package com.snk.auth.controller;
 
 import com.snk.auth.pojo.domain.PublicUser;
 import com.snk.auth.pojo.dto.UserDTO;
-import com.snk.auth.pojo.enums.LoginType;
+import com.snk.auth.pojo.param.LoginParam;
 import com.snk.auth.service.LoginService;
 import com.snk.auth.service.PublicUserService;
 import com.snk.auth.service.impl.LoginStrategyFactory;
@@ -12,11 +12,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -46,12 +45,12 @@ public class PublicUserController {
     }
 
 
-    @GetMapping("/login")
-    @ApiOperation(value = "登录",notes = "用户登录系统，暂时get调用，并且显示传参后面修改为post隐式传参")
-    public Response<UserDTO> login(@RequestParam("username") String username,@RequestParam("password") String password) {
-        log.info("用户登录：{}",username);
-        LoginService strategy = loginStrategyFactory.getStrategy(LoginType.SNK);
-        UserDTO login = strategy.login(username, password);
+    @PostMapping("/login")
+    @ApiOperation(value = "登录",notes = "用户登录系统，根据登录类型区分不同的登录方式")
+    public Response<UserDTO> login(@RequestBody @Validated LoginParam loginParam) {
+        log.info("用户登录：{}",loginParam.getUsername());
+        LoginService strategy = loginStrategyFactory.getStrategy(loginParam.getLoginType());
+        UserDTO login = strategy.login(loginParam.getUsername(), loginParam.getPassword());
         return new Response<>(login);
     }
 }
