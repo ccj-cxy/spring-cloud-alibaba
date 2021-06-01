@@ -18,8 +18,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel("登录入参")
 public class LoginParam {
     @ApiModelProperty("登录类型")
-    @NotNull(message = "登录类型不能为空")
-    private LoginType loginType;
+    private LoginType loginType = LoginType.SNK;
     @NotEmpty(message = "用户名不能为空")
     @ApiModelProperty("登录名")
     private String username;
