@@ -1,27 +1,17 @@
 package com.snk.auth.service.impl;
 
-import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.snk.auth.dao.PublicUserMapper;
 import com.snk.auth.pojo.domain.PublicUser;
-import com.snk.auth.pojo.dto.UserDTO;
-import com.snk.auth.service.PublicRoleResourceService;
-import com.snk.auth.service.PublicUserRoleService;
 import com.snk.auth.service.PublicUserService;
 import com.snk.common.exception.LoginException;
 import com.snk.common.utils.Base64Util;
-import com.snk.jwt.constants.TokenConstant;
-import com.snk.jwt.utils.JWTUtil;
-import com.snk.redis.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -35,14 +25,7 @@ import java.util.concurrent.TimeUnit;
 public class PublicUserServiceImpl extends ServiceImpl<PublicUserMapper, PublicUser> implements PublicUserService {
     @Autowired
     private PublicUserMapper publicUserMapper;
-    @Autowired
-    private PublicUserRoleService publicUserRoleService;
-    @Autowired
-    private PublicRoleResourceService publicRoleResourceService;
-    @Autowired
-    private RedisUtil redisUtil;
-    @Autowired
-    private JWTUtil jwtUtil;
+
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -54,37 +37,11 @@ public class PublicUserServiceImpl extends ServiceImpl<PublicUserMapper, PublicU
 
 
     @Override
-    public UserDTO login(String username, String password) {
+    public PublicUser getUserByName(String username) {
         QueryWrapper<PublicUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(PublicUser::getName,username);
         //不为空，否则抛出登录异常
         PublicUser publicUser = Optional.ofNullable(publicUserMapper.selectOne(queryWrapper)).orElseThrow(LoginException::new);
-        String userPassword = Base64Util.base64Decoder(publicUser.getPassword());
-        //判断密码是否正确
-        if (password.equals(userPassword)) {
-            //密码正确，生成token
-            //将密码置空token中不携带密码信息
-            publicUser.setPassword(null);
-            String jsonStr = JSONUtil.toJsonStr(JSONUtil.parse(publicUser));
-            //过期时间不设使用默认时间，为一个小时
-            String token = jwtUtil.createJWT(UUID.randomUUID().toString(),jsonStr , null);
-            //同步对象转换为UserDTO
-            UserDTO userDTO = JSONUtil.toBean(jsonStr, UserDTO.class);
-            //得到用户角色添加到返回值
-            Set<Integer> roleIds = publicUserRoleService.findRoleIds(userDTO.getId());
-            userDTO.setRoleIds(roleIds);
-            //得到用户所有资源添加到返回值
-            userDTO.setResources(publicRoleResourceService.getAllResource(roleIds));
-            userDTO.setToken(token);
-            String cacheKey = TokenConstant.CACHE_TOKEN_KEY+token;
-            //设置缓存并加上30分钟默认时间
-            redisUtil.set(cacheKey,JSONUtil.toJsonStr(JSONUtil.parse(userDTO)));
-            redisUtil.expire(cacheKey,30L, TimeUnit.MINUTES);
-            //将登录对象返回
-            return userDTO;
-        }else {
-            //密码不正确，抛出登录异常
-            throw new LoginException(String.valueOf(publicUser.getId()));
-        }
+        return publicUser;
     }
 }
