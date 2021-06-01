@@ -19,6 +19,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Component
 public class LoginStrategyFactory implements InitializingBean, ApplicationContextAware {
+    /**
+     * 为了表示清晰选择使用implements InitializingBean, ApplicationContextAware
+     * 其实直接 @Autowired Map<String,LoginService> 就可以直接完成
+     */
     private final Map<LoginType, LoginService> strategyMap = new ConcurrentHashMap<>();
     private ApplicationContext appContext;
 
