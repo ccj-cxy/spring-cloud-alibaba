@@ -32,14 +32,8 @@ public class SendEmailService {
      */
     @Async
     public void sendEmail(OrdinaryEmailDTO ordinaryEmailDTO) {
-        try {
-            Thread.sleep(3000);
-            log.info("发送邮件至{}",ordinaryEmailDTO.getTo());
-            Response response = emailFeign.sendEmail(ordinaryEmailDTO);
-            log.info("{}",response);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        log.info("发送邮件至{}",ordinaryEmailDTO.getTo());
+        Response response = emailFeign.sendEmail(ordinaryEmailDTO);
+        log.info("{}",response);
     }
 }
