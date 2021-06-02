@@ -4,11 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
 @ApiModel("返回包装")
+@NoArgsConstructor
 public class Response<T> {
     @ApiModelProperty("系统响应值")
     private int code = HttpStatus.OK.value();
