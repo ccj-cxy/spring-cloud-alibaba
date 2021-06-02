@@ -48,35 +48,54 @@ public class PublicResourceServiceImpl extends ServiceImpl<PublicResourceMapper,
             BeanUtil.copyProperties(resource1,dto1);
             resourceTreeDTOS1.add(dto1);
         });
-        List<ResourceTreeDTO> dtos = builTree();
+        List<ResourceTreeDTO> dtos = buildTree();
         resourceTreeDTOS1.clear();
         return dtos;
     }
 
-    //建立树形结构
-    public List<ResourceTreeDTO> builTree(){
+    /**
+     * 构建树结构
+     * @author Cai.ChangJun
+     * @return: 整个树
+     * @version 1.0.0
+     * @Date 2021/6/2 23:55
+     */
+    public List<ResourceTreeDTO> buildTree(){
         List<ResourceTreeDTO> treeMenus =new  ArrayList<>();
         List<ResourceTreeDTO> rootNode = getRootNode();
         for(ResourceTreeDTO menuNode : rootNode) {
-            menuNode=buildChilTree(menuNode);
+            menuNode=buildChildTree(menuNode);
             treeMenus.add(menuNode);
         }
         return treeMenus;
     }
 
-    //递归，建立子树形结构
-    private ResourceTreeDTO buildChilTree(ResourceTreeDTO pNode){
-        List<ResourceTreeDTO> chilMenus =new  ArrayList<>();
+    /**
+     * 递归建立子树
+     * @author Cai.ChangJun
+     * @param pNode: 父节点
+     * @return:
+     * @version 1.0.0
+     * @Date 2021/6/2 23:55
+     */
+    private ResourceTreeDTO buildChildTree(ResourceTreeDTO pNode){
+        List<ResourceTreeDTO> childMenus =new  ArrayList<>();
         for(ResourceTreeDTO menuNode : resourceTreeDTOS1) {
             if(menuNode.getParentId().equals(pNode.getId())) {
-                chilMenus.add(buildChilTree(menuNode));
+                childMenus.add(buildChildTree(menuNode));
             }
         }
-        pNode.setChild(chilMenus);
+        pNode.setChild(childMenus);
         return pNode;
     }
 
-    //获取根节点
+    /**
+     *  获取根节点
+     * @author Cai.ChangJun
+     * @return: 所有根节点
+     * @version 1.0.0
+     * @Date 2021/6/2 23:56
+     */
     private List<ResourceTreeDTO> getRootNode() {
         List<ResourceTreeDTO> rootMenuLists =new  ArrayList<>();
         for(ResourceTreeDTO menuNode : resourceTreeDTOS1) {
