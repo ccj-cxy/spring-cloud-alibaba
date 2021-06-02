@@ -1,10 +1,8 @@
 package com.snk.file.service;
 
 import com.snk.file.config.MinioConfig;
-import com.snk.file.utils.FileUploadUtils;
 import com.snk.file.utils.MinIoUtil;
 import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +46,7 @@ public class MinioFileServiceImpl implements UploadFileService
         if (!minIoUtil.bucketExists(bucketName)) {
             minIoUtil.createBucket(bucketName);
         }
-        minIoUtil.upload(bucketName,file);
+        minIoUtil.upload(bucketName,file.getOriginalFilename(),file);
         return minioConfig.getUrl() + "/" + minioConfig.getBucketName() + "/" + file.getOriginalFilename();
     }
 

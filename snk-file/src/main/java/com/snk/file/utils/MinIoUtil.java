@@ -3,7 +3,6 @@ package com.snk.file.utils;
 import io.minio.BucketExistsArgs;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.ListObjectsArgs;
-import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectStat;
 import io.minio.PutObjectOptions;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.net.URLEncoder;
@@ -165,6 +163,26 @@ public  class MinIoUtil {
     public  String upload(String bucketName, MultipartFile file) {
         final InputStream is = file.getInputStream();
         final String fileName = file.getOriginalFilename();
+        minioClient.putObject(bucketName, fileName, is, new PutObjectOptions(is.available(), -1));
+        is.close();
+        return getFileUrl(bucketName, fileName);
+    }
+
+
+    /**
+     * 文件上传
+     *
+     * @param bucketName:
+     *            桶名
+     * @param file:
+     *            文件
+     * @param fileName:
+     *            文件名 区分文件分级多级目录
+     * @return: java.lang.String : 文件url地址
+     */
+    @SneakyThrows(Exception.class)
+    public  String upload(String bucketName, String fileName,MultipartFile file) {
+        final InputStream is = file.getInputStream();
         minioClient.putObject(bucketName, fileName, is, new PutObjectOptions(is.available(), -1));
         is.close();
         return getFileUrl(bucketName, fileName);
