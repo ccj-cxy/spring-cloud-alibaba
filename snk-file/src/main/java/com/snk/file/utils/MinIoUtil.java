@@ -1,6 +1,7 @@
 package com.snk.file.utils;
 
 import io.minio.BucketExistsArgs;
+import io.minio.GetObjectArgs;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.ListObjectsArgs;
 import io.minio.MakeBucketArgs;
@@ -224,7 +225,7 @@ public  class MinIoUtil {
         response.setContentType(stat.contentType());
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileName, "UTF-8"));
-        InputStream is = minioClient.getObject(bucketName, fileName);
+        InputStream is = minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(fileName).build() );
         IOUtils.copy(is, response.getOutputStream());
         is.close();
     }
