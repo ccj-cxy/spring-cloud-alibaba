@@ -2,7 +2,9 @@ package com.snk.auth.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.snk.auth.pojo.domain.PublicResource;
+import com.snk.auth.pojo.dto.ResourceTreeDTO;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,4 +27,13 @@ public interface PublicResourceService extends IService<PublicResource> {
      * @Date 2021/5/28 15:17
      */
     Set<PublicResource> getResources(Set<Integer> resourceIds);
+
+    /**
+     * 递归查询资源树
+     * @author Cai.ChangJun
+     * @return: 资源树
+     * @version 1.0.0
+     * @Date 2021/6/2 20:18
+     */
+    List<ResourceTreeDTO> getResourceTree();
 }

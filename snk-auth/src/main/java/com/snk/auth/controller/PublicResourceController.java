@@ -3,6 +3,7 @@ package com.snk.auth.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.snk.auth.pojo.domain.PublicResource;
+import com.snk.auth.pojo.dto.ResourceTreeDTO;
 import com.snk.auth.pojo.param.ResourceParam;
 import com.snk.auth.service.PublicResourceService;
 import io.swagger.annotations.Api;
@@ -56,6 +57,14 @@ public class PublicResourceController {
         publicResourceService.removeByIds(resourceIds);
         return resourceIds.size();
     }
+
+    @DeleteMapping("/tree")
+    @ApiOperation(value = "获取资源树" ,notes = "获取资源树")
+    public List<ResourceTreeDTO> getTree() {
+        return publicResourceService.getResourceTree();
+    }
+
+
 
 
 
