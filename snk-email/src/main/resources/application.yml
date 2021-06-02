@@ -1,6 +1,8 @@
 server:
   port: 10001
 spring:
+  main:
+    allow-bean-definition-overriding: true
   mail:
     username: 994173486@qq.com
     password: ****
