@@ -3,8 +3,10 @@ package com.snk.file.utils;
 import io.minio.BucketExistsArgs;
 import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.ListObjectsArgs;
+import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectStat;
+import io.minio.PutObjectArgs;
 import io.minio.PutObjectOptions;
 import io.minio.RemoveBucketArgs;
 import io.minio.Result;
@@ -59,7 +61,7 @@ public  class MinIoUtil {
     public  void createBucket(String bucketName) {
         boolean isExist = bucketExists(bucketName);
         if (!isExist) {
-            minioClient.makeBucket(bucketName);
+            minioClient.makeBucket( MakeBucketArgs.builder().bucket(bucketName).build());
         }
     }
 
@@ -163,7 +165,8 @@ public  class MinIoUtil {
     public  String upload(String bucketName, MultipartFile file) {
         final InputStream is = file.getInputStream();
         final String fileName = file.getOriginalFilename();
-        minioClient.putObject(bucketName, fileName, is, new PutObjectOptions(is.available(), -1));
+        minioClient.putObject(
+                PutObjectArgs.builder().bucket(bucketName).object(fileName).stream(is,is.available(),-1).build());
         is.close();
         return getFileUrl(bucketName, fileName);
     }
@@ -183,7 +186,9 @@ public  class MinIoUtil {
     @SneakyThrows(Exception.class)
     public  String upload(String bucketName, String fileName,MultipartFile file) {
         final InputStream is = file.getInputStream();
-        minioClient.putObject(bucketName, fileName, is, new PutObjectOptions(is.available(), -1));
+        minioClient.putObject(
+                PutObjectArgs.builder().bucket(bucketName).object(fileName).stream(is,is.available(),-1).build()
+               );
         is.close();
         return getFileUrl(bucketName, fileName);
     }
