@@ -15,20 +15,26 @@ spring:
     name: snk-auth
 feign:
   hystrix:
-    enabled: false
+    enabled: true
   client:
     config:
       default:
         #Feign的连接建立超时时间，默认为10秒
-        connectTimeout: 10000
-        #Feign的请求处理超时时间，默认为5秒
-        readTimeout: 5000
-        retryer:
-          feign:
-            #Feign使用默认的超时配置，在该类源码中可见，默认单次请求最大时长1秒，重试5次
-            Retryer: Default
-
-
+        connectTimeout: 100000
+        #Feign的请求处理超时时间，默认为10秒
+        readTimeout: 100000
+hystrix:
+  command:
+    default:
+      execution:
+        enable: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+#ribbon的超时时间
+ribbon:
+  ReadTimeout: 5000 #设置请求处理的超时时间
+  ConnectTimeout: 5000  #设置请求链接的超时时间
 logging:
   level:
     com.alibaba.nacos.client.config.impl: WARN
