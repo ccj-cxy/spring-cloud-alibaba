@@ -1,5 +1,6 @@
 package com.snk.auth.pojo.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.List;
@@ -15,40 +16,48 @@ public class ResourceTreeDTO {
     /**
      * 资源id
      */
+    @ApiModelProperty("资源节点id")
     private Integer id;
 
     /**
      * 资源名称
      */
+    @ApiModelProperty("资源名称")
     private String name;
 
     /**
      * 资源类型 1:子系统 2:业务模块 3:页面 4:功能项
      */
+    @ApiModelProperty("资源类型 1:子系统 2:业务模块 3:页面 4:功能项")
     private Integer type;
 
     /**
      * 资源地址
      */
+    @ApiModelProperty("资源地址")
     private String url;
 
     /**
      * 访问权限
      */
+    @ApiModelProperty("访问权限")
     private String permissionName;
 
     /**
      * 资源图标
      */
+    @ApiModelProperty("资源图标")
     private String icon;
 
     /**
      * 父级资源id
      */
+    @ApiModelProperty("父级资源id")
     private Integer parentId;
 
     /**
      * 子节点信息
      */
+    @ApiModelProperty("子节点信息")
     private List<ResourceTreeDTO> child;
 }
