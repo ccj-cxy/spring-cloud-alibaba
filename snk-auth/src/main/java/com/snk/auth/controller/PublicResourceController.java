@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,7 +59,7 @@ public class PublicResourceController {
         return resourceIds.size();
     }
 
-    @DeleteMapping("/tree")
+    @GetMapping("/tree")
     @ApiOperation(value = "获取资源树" ,notes = "获取资源树")
     public List<ResourceTreeDTO> getTree() {
         return publicResourceService.getResourceTree();
