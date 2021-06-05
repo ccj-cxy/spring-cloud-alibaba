@@ -8,17 +8,19 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 
 //根据表名自动生成java文件
+@Slf4j
 public class Generator {
 
 public static void main(String[] args) {
         String packageName = "com.snk.userconumer";
         boolean serviceNameStartWithI = false;
         generateByTables(serviceNameStartWithI, packageName, "Cai.ChangJun", "user-consumer", "broker_message_log");//li作者。test数据库名。user表名。
-        System.out.println("completed...");
+        log.info("completed...");
     }
 
 

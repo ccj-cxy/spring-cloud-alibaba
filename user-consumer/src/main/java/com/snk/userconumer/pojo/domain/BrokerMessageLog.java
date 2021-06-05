@@ -1,13 +1,7 @@
 package com.snk.userconumer.pojo.domain;
 
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
-import java.util.Date;
-
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -17,6 +11,11 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -51,6 +50,7 @@ public class BrokerMessageLog implements Serializable {
     /**
      * 消息投递状态  0 投递中 1 投递成功   2 投递失败
      */
+    @NotEmpty(message = "投递状态不能为空")
     private String status;
 
     /**

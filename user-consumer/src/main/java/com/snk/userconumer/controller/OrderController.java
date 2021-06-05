@@ -12,8 +12,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -40,7 +40,7 @@ public class OrderController {
 
     @GetMapping("/getPage")
     @ApiOperation(value = "获取所有订单",notes = "获取已经消费的订单")
-    public PageInfo<Order> saveOrder(@RequestBody @Validated OrderParam orderDO) {
+    public PageInfo<Order> saveOrder(@RequestBody @Validated OrderParam orderDO, @RequestHeader("user")String uesr) {
         return orderService.getPageInfo(orderDO);
     }
 }

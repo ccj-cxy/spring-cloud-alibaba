@@ -66,6 +66,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Override
     public PageInfo<Order> getPageInfo(OrderParam orderParam) {
         PageHelper.startPage(orderParam.getPageNum(),orderParam.getPageSize());
-        return new PageInfo<Order>(orderMapper.selectList(null));
+        return new PageInfo<>(orderMapper.selectList(null));
     }
 }

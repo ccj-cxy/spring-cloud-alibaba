@@ -1,8 +1,5 @@
 package com.snk.userconumer.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.snk.userconumer.dao.BrokerMessageLogMapper;
 import com.snk.userconumer.pojo.domain.BrokerMessageLog;
 import com.snk.userconumer.service.BrokerMessageLogService;

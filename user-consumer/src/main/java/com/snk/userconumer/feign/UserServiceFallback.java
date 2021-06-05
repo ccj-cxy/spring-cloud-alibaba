@@ -15,6 +15,8 @@ public class UserServiceFallback implements FallbackFactory<UserService> {
 
     @Override
     public UserService create(Throwable throwable) {
-        throw new BusinessException("远程调用运单服务失败，消息无法投递");
+       return ()->{
+           throw new BusinessException("远程调用运单服务失败，消息无法投递");
+        };
     }
 }
