@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.DispatcherType;
 import java.util.HashMap;
@@ -17,15 +18,16 @@ import java.util.Map;
  * @Description :
  * @Date : 2021/2/25
  */
+@Configuration
 public class FilterConfig {
 
-    @Value("${xss.enabled}")
+    @Value("${xss.enabled:false}")
     private String enabled;
 
-    @Value("${xss.excludes}")
+    @Value("${xss.excludes:''}")
     private String excludes;
 
-    @Value("${xss.urlPatterns}")
+    @Value("${xss.urlPatterns:''}")
     private String urlPatterns;
 
     @SuppressWarnings({ "rawtypes", "unchecked" })

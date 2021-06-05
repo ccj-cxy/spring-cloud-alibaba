@@ -1,5 +1,6 @@
 package com.snk.common.constants;
 
+
 /**
  *
  * @author Cai.ChangJun
@@ -7,6 +8,9 @@ package com.snk.common.constants;
  * @Date 2021/5/19 16:04
  */
 public class PageConstant {
+    private PageConstant() {
+    }
+
     /**默认页码1*/
     public static final int PAGE_DEFAULT_NUMBER = 1;
     /**默认页数10*/

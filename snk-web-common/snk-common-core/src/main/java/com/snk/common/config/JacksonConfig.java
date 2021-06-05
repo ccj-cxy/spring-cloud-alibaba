@@ -2,6 +2,7 @@ package com.snk.common.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -70,22 +71,11 @@ public class JacksonConfig {
         // Include.NON_NULL 属性为NULL 不序列化
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         // 允许出现特殊字符和转义符
-        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        objectMapper.configure(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS.mappedFeature(), true);
         // 允许出现单引号
         objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
-        /**
-         *  将Long,BigInteger序列化的时候,转化为String
-         */
-        //  SimpleModule simpleModule = new SimpleModule();
-        //
-        //  simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
-        //  simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
-        //  simpleModule.addSerializer(BigInteger.class, ToStringSerializer.instance);
-        //
-        //  objectMapper.registerModule(simpleModule);
 
         // 将工具类中的 objectMapper 换为 Spring 中的 objectMapper
         JacksonUtil.objectMapper = objectMapper;
