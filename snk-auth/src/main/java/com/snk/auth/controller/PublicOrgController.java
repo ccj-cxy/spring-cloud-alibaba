@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,10 +60,10 @@ public class PublicOrgController {
         return OrgIds.size();
     }
 
-    @GetMapping("/tree")
+    @GetMapping("/tree/{orgId}")
     @ApiOperation(value = "获取组织树" ,notes = "获取组织树")
-    public List<OrgTreeDTO> getTree() {
-        return publicOrgService.getOrgTree();
+    public List<OrgTreeDTO> getTree(@PathVariable ("orgId")Integer orgId) {
+        return publicOrgService.getOrgTree(orgId);
     }
 }
 

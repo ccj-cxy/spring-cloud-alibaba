@@ -29,14 +29,14 @@ public class PublicOrgServiceImpl extends ServiceImpl<PublicOrgMapper, PublicOrg
     private volatile List<OrgTreeDTO> orgs = new ArrayList<>();
 
     @Override
-    public List<OrgTreeDTO> getOrgTree() {
+    public List<OrgTreeDTO> getOrgTree(Integer orgId) {
         List<PublicOrg> publicOrgs = orgMapper.selectList(null);
         publicOrgs.forEach(publicOrg -> {
             OrgTreeDTO orgTreeDTO = new OrgTreeDTO();
             BeanUtil.copyProperties(publicOrg,orgTreeDTO);
             orgs.add(orgTreeDTO);
         });
-        List<OrgTreeDTO> orgTreeDTOS = buildTree();
+        List<OrgTreeDTO> orgTreeDTOS = buildTree(orgId);
         orgs.clear();
         return orgTreeDTOS;
     }
@@ -48,9 +48,9 @@ public class PublicOrgServiceImpl extends ServiceImpl<PublicOrgMapper, PublicOrg
      * @version 1.0.0
      * @Date 2021/6/2 23:55
      */
-    public List<OrgTreeDTO> buildTree(){
+    public List<OrgTreeDTO> buildTree(Integer orgId){
         List<OrgTreeDTO> treeMenus =new  ArrayList<>();
-        List<OrgTreeDTO> rootNode = getRootNode();
+        List<OrgTreeDTO> rootNode = getRootNode(orgId);
         for(OrgTreeDTO menuNode : rootNode) {
             menuNode=buildChildTree(menuNode);
             treeMenus.add(menuNode);
@@ -84,10 +84,10 @@ public class PublicOrgServiceImpl extends ServiceImpl<PublicOrgMapper, PublicOrg
      * @version 1.0.0
      * @Date 2021/6/2 23:56
      */
-    private List<OrgTreeDTO> getRootNode() {
+    private List<OrgTreeDTO> getRootNode(Integer orgId) {
         List<OrgTreeDTO> rootMenuLists =new  ArrayList<>();
         for(OrgTreeDTO menuNode : orgs) {
-            if(menuNode.getParentId() == 0) {
+            if(menuNode.getParentId().equals(orgId)) {
                 rootMenuLists.add(menuNode);
             }
         }

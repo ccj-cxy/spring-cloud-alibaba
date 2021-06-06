@@ -23,5 +23,5 @@ public interface PublicOrgService extends IService<PublicOrg> {
      * @version 1.0.0
      * @Date 2021/6/2 20:18
      */
-    List<OrgTreeDTO> getOrgTree();
+    List<OrgTreeDTO> getOrgTree(Integer orgId);
 }
