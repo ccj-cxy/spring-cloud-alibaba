@@ -63,6 +63,26 @@ spring:
             - Path=/snk-auth/**
           filters:
             - StripPrefix=1
+          # 跨域
+          globalcors:
+            corsConfigurations:
+              '[/**]':
+                allowedHeaders: "*"
+                allowedOrigins: "*"
+                allowedMethods:
+                  - GET
+                    POST
+                    DELETE
+                    PUT
+                    OPTION
+    sentinel:
+      #取消懒加载
+      eager: true
+      transport:
+        #更控制台交流的端口，随意指定 一个未使用的端口
+        port: 9999
+        #指定控制台服务的地址
+        dashboard: localhost:8080
   application:
     name: api-gateway
   redis:
