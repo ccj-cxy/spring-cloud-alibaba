@@ -65,10 +65,10 @@ public class PublicRole implements Serializable {
     private Boolean defaulted;
 
     /**
-     * 站点id
+     * 组织id
      */
-    @ApiModelProperty("站点id")
-    private Integer webId;
+    @ApiModelProperty("组织id")
+    private Integer orgId;
 
     /**
      * 创建时间

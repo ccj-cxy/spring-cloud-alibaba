@@ -106,10 +106,10 @@ public class PublicUser implements Serializable {
     private Date updateTime;
 
     /**
-     * 站点id
+     * 组织id
      */
-    @ApiModelProperty("站点id")
-    private Integer webId;
+    @ApiModelProperty("组织id")
+    private Integer orgId;
 
 
 }

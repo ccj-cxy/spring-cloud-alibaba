@@ -17,7 +17,7 @@ public class Generator {
 public static void main(String[] args) {
         String packageName = "com.snk.auth";
         boolean serviceNameStartWithI = false;
-        generateByTables(serviceNameStartWithI, packageName, "Cai.ChangJun", "snk-auth", "public_role_resource");//li作者。test数据库名。user表名。
+        generateByTables(serviceNameStartWithI, packageName, "Cai.ChangJun", "snk-auth", "public_org");//li作者。test数据库名。user表名。
         System.out.println("completed...");
     }
 
