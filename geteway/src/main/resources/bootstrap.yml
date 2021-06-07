@@ -63,18 +63,16 @@ spring:
             - Path=/snk-auth/**
           filters:
             - StripPrefix=1
+          locator:
+            enabled: true
           # 跨域
           globalcors:
             corsConfigurations:
               '[/**]':
                 allowedHeaders: "*"
                 allowedOrigins: "*"
-                allowedMethods:
-                  - GET
-                    POST
-                    DELETE
-                    PUT
-                    OPTION
+                allowedMethods: "*"
+
     sentinel:
       #取消懒加载
       eager: true
