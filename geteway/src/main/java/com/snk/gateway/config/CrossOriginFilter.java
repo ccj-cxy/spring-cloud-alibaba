@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-import org.springframework.web.util.pattern.PathPatternParser;
 
 /**
  * description: 跨域访问
@@ -18,13 +17,14 @@ import org.springframework.web.util.pattern.PathPatternParser;
 public class CrossOriginFilter {
     @Bean
     public CorsWebFilter corsFilter() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedMethod("*");
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
-        source.registerCorsConfiguration("/**", config);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        //1、配置跨域
+        corsConfiguration.addAllowedHeader("*"); // 允许任何头
+        corsConfiguration.addAllowedMethod("*"); // 允许任何方法（post、get等）
+        corsConfiguration.addAllowedOrigin("*");// 允许任何域名使用
+        corsConfiguration.setAllowCredentials(true);//允许携带cookie访问
+        source.registerCorsConfiguration("/**",corsConfiguration);
         return new CorsWebFilter(source);
     }
 }
