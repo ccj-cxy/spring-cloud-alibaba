@@ -23,6 +23,7 @@
         <module>snk-common-swagger</module>
         <module>snk-common-redis</module>
         <module>snk-common-jwt</module>
+        <module>snk-common-systeminfo</module>
     </modules>
 
     <dependencies>
