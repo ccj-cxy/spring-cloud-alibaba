@@ -60,6 +60,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
+        <!-- 引入swagger-bootstrap-ui包 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.8.5</version>
+        </dependency>
 
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -67,10 +73,16 @@
         </dependency>
 
         <!--限流-->
-        <!--<dependency>
+        <!--sentinel-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+       <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
         </dependency>
+        <!--
         &lt;!&ndash;seata&ndash;&gt;
        <dependency>
            <groupId>com.alibaba.cloud</groupId>
