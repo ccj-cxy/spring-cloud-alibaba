@@ -16,6 +16,7 @@ spring:
 ignore:
   #白名单 些全路径加上项目名
   whites: /snk-auth/user/login,
+          /snk-auth/kaptcha,
           /snk-auth/user/registered,
           /**/v2/api-docs
 
