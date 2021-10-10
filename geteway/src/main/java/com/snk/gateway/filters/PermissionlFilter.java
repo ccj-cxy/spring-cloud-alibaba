@@ -26,6 +26,8 @@ import reactor.core.publisher.Mono;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -67,7 +69,7 @@ public class PermissionlFilter implements GlobalFilter, Ordered {
                 Type t = list.getType();
                 UserDTO userDTO =  JSONUtil.toBean(user,t,false);
                 //获取用户所拥有的资源对比
-                Set<ResourceDTO> resources = userDTO.getResources();
+                Set<ResourceDTO> resources = Optional.ofNullable(userDTO.getResources()).orElse(new LinkedHashSet<>());
                 Set<String> permissions = resources.stream().map(ResourceDTO::getPermissionName).collect(Collectors.toSet());
                 //系统管理员可以绕过系统权鉴
                 if ( (userDTO.getType() != 0) && !permissions.contains(url) ) {
