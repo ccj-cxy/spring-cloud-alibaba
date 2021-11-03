@@ -46,6 +46,13 @@ public class XxlJobAutoConfiguration {
         return xxlJobSpringExecutor;
     }
 
+    @Bean
+    public XxlJobClient xxlJobClient(XxlJobProperties xxlJobProperties) {
+        XxlJobClient xxlJobClient = new XxlJobClient();
+        xxlJobClient.setXxlJobProperties(xxlJobProperties);
+        return xxlJobClient;
+    }
+
     /**
      * 针对多网卡、容器内部署等情况，可借助 "spring-cloud-commons" 提供的 "InetUtils" 组件灵活定制注册IP；
      *
