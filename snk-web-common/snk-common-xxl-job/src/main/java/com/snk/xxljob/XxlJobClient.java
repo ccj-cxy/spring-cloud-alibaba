@@ -105,9 +105,10 @@ public class XxlJobClient {
         }
     }
 
-    public Boolean login(String userName, String password) {
+    public Boolean login() {
         try {
-            String cookie = XxlJobUtil.login(xxlJobProperties.getAdmin().getAddresses(), userName, password);
+            String cookie = XxlJobUtil.login(xxlJobProperties.getAdmin().getAddresses(), xxlJobProperties.getAdmin().getUsername()
+                    , xxlJobProperties.getAdmin().getPassword());
             if (StrUtil.isNotBlank(cookie)) {
                 return true;
             }

@@ -31,5 +31,7 @@ public class XxlJobProperties {
     @Data
     public static class AdminProperties  {
         private String  addresses;
+        private String username = "admin";
+        private String password = "password";
     }
 }
