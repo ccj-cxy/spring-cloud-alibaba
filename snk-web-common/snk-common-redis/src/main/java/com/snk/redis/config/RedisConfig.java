@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.snk.redis.utils.RedisUtil;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,7 @@ import java.time.Duration;
  * @Date : 2021/5/18
  */
 @Configuration
+@ConditionalOnClass(StringRedisTemplate.class)
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 public class RedisConfig {
 
