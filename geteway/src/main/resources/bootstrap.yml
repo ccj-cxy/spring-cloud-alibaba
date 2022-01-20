@@ -2,12 +2,12 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 127.0.0.1:8848   #nacos的服务端地址
+        server-addr: www.caichangjun.cn:8848   #nacos的服务端地址
         file-extension: yaml #配置格式
         namespace: public
         group: DEFAULT_GROUP
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: www.caichangjun.cn:8848
         namespace: public
     gateway:
       discovery:
@@ -65,6 +65,15 @@ spring:
             - StripPrefix=1
           locator:
             enabled: true
+        - id: snk-order
+          uri:  lb://snk-order
+          order: 1
+          predicates:
+            - Path=/snk-order/**
+          filters:
+            - StripPrefix=1
+          locator:
+            enabled: true
           # 跨域
           globalcors:
             corsConfigurations:
@@ -84,7 +93,7 @@ spring:
   application:
     name: api-gateway
   redis:
-    host: 127.0.0.1
+    host: www.caichangjun.cn
     port: 6379
     database: 0
 server:
