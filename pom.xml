@@ -15,8 +15,12 @@
         <module>snk-email</module>
         <module>snk-amqp</module>
         <module>snk-file</module>
+        <module>snk-es</module>
         <module>snk-websocket</module>
         <module>snk-auth</module>
+        <module>snk-quartz</module>
+        <module>snk-order</module>
+        <module>open-api</module>
     </modules>
     <packaging>pom</packaging>
     <!--父工程-->
@@ -48,6 +52,8 @@
         <minio.version>7.1.0</minio.version>
         <bitwalker.version>1.21</bitwalker.version>
         <lionsoul.version>1.7.2</lionsoul.version>
+        <shardingsphere.version>4.0.0-RC1</shardingsphere.version>
+        <xxl-job.version>2.3.0</xxl-job.version>
     </properties>
 
     <dependencyManagement>
@@ -71,7 +77,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
             <!-- spring boot 缓存 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -142,6 +152,28 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
                 <version>${commons-pool2.version}</version>
+            </dependency>
+
+            <!--shardingsphere start-->
+            <!-- for spring boot -->
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!-- for spring namespace -->
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-namespace</artifactId>
+                <version>${shardingsphere.version}</version>
+            </dependency>
+            <!--shardingsphere end-->
+
+            <!-- xxl-job-core -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author :Cai.ChangJun
  * @version 1.0.0
- * @Description : rabbitMQ配置配
+ * @Description : rabbitMQ配置配 死信队列
  * @Date : 2021/5/7
  */
 @Configuration

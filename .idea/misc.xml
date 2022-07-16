@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/snk-common-apivalidata/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-common-core/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-common-swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-common-systeminfo/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-web-common/snk-api-validata/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-web-common/snk-common-cache/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-web-common/snk-common-quartz/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-web-common/snk-common-sso/pom.xml" />
+        <option value="$PROJECT_DIR$/snk-web-common/snk-web-swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/untitled/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="snk-file" />
+      </set>
+    </option>
+  </component>
+</project>

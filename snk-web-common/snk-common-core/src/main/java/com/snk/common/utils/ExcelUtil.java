@@ -2,11 +2,13 @@ package com.snk.common.utils;
 
 import com.alibaba.excel.EasyExcel;
 import  com.alibaba.excel.ExcelReader;
+import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.read.builder.ExcelReaderBuilder;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.util.StringUtils;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
+import com.alibaba.excel.write.metadata.WriteSheet;
 import com.snk.common.domain.dto.EasyExcelDTO;
 import com.snk.common.listener.ExcelListener;
 import lombok.NoArgsConstructor;
@@ -31,12 +33,31 @@ import java.util.List;
 @NoArgsConstructor
 public class ExcelUtil {
 
-    public static void exportExcel(EasyExcelDTO easyExcelDTO, Class clazz){
+    public static void exportExcel(EasyExcelDTO easyExcelDTO){
         HttpServletResponse response = easyExcelDTO.getHttpServletResponse();
         setHttpHeader(easyExcelDTO.getHttpServletResponse(),easyExcelDTO.getFileName(),easyExcelDTO.getFileNameType());
-        ExcelWriterBuilder writerSheetBuilder =(ExcelWriterBuilder) EasyExcel.write(getOutPutStream(easyExcelDTO.getHttpServletResponse())).head(clazz);
+        ExcelWriterBuilder writerSheetBuilder =(ExcelWriterBuilder) EasyExcel.write(getOutPutStream(easyExcelDTO.getHttpServletResponse())).head(easyExcelDTO.getClassModel());
         writerSheetBuilder.sheet(StringUtils.isEmpty(easyExcelDTO.getSheetName())?"sheet1":easyExcelDTO.getSheetName()).doWrite(easyExcelDTO.getData());
     }
+
+
+
+   public static void exportExcels(List<EasyExcelDTO> easyExcelDTOS,String FileName,
+                                   HttpServletResponse httpServletResponse) {
+       ExcelWriter excelWriter = EasyExcel
+               .write(getOutPutStream(httpServletResponse))
+               .autoCloseStream(true).build();
+       setHttpHeader(httpServletResponse,FileName,ExcelTypeEnum.XLSX.getValue());
+       //将list拆为多sheet
+       for (int i = 0; i < easyExcelDTOS.size(); i++) {
+           WriteSheet sheet = EasyExcel.writerSheet().head(easyExcelDTOS.get(i).getClassModel())
+                   .excludeColumnFiledNames(easyExcelDTOS.get(i).getExcludeColumnFiledNames())
+                   .sheetName(StringUtils.isEmpty(easyExcelDTOS.get(i).getSheetName()) ?
+                           "sheet" + i : easyExcelDTOS.get(i).getSheetName()).build();
+           excelWriter.write(easyExcelDTOS.get(i).getData(),sheet);
+       }
+       excelWriter.finish();
+   }
 
     private static void  setHttpHeader(HttpServletResponse response, String fileName, String fileNameType){
         try {

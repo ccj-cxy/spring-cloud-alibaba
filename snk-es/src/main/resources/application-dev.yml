@@ -1,0 +1,13 @@
+# ElasticsearchProperties
+# spring.data.elasticsearch.cluster-name=my-application
+# spring.data.elasticsearch.cluster-nodes=127.0.0.1:9300
+es:
+  clusterNodes:
+    list: 192.168.71.134
+    port: 9200
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8086

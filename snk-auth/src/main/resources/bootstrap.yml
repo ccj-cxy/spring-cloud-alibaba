@@ -3,13 +3,13 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 127.0.0.1:8848
+        server-addr: www.caichangjun.cn:8848
         file-extension: yml
         name: snk-auth
         group: DEFAULT_GROUP
         namespace:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: www.caichangjun.cn:8848
         namespace:
   application:
     name: snk-auth

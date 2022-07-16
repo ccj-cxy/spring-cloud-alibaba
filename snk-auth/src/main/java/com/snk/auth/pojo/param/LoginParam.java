@@ -23,5 +23,7 @@ public class LoginParam {
     private String username;
     @ApiModelProperty("登录密码")
     private String password;
+    @ApiModelProperty("验证码")
+    private String code;
 
 }

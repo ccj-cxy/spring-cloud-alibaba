@@ -33,6 +33,10 @@ public class EasyExcelDTO<T> {
     private List<T> data;
     /**文件类型*/
     private String fileNameType;
+
+    /**需要排除列表字段*/
+    private List<String> excludeColumnFiledNames;
+
     protected boolean canEqual(final Object other) {
         return other instanceof EasyExcelDTO;
     }

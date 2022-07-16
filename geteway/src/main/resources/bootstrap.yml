@@ -74,6 +74,15 @@ spring:
             - StripPrefix=1
           locator:
             enabled: true
+        - id: open-api
+          uri:  lb://open-api
+          order: 1
+          predicates:
+            - Path=/open-api/**
+          filters:
+            - StripPrefix=1
+          locator:
+            enabled: true
           # 跨域
           globalcors:
             corsConfigurations:

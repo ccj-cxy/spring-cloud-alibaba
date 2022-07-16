@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="snk-email" />
+        <module name="snk-common-swagger" />
+        <module name="snk-common-systeminfo" />
+        <module name="snk-spring-boot-starter" />
+        <module name="snk-order" />
+        <module name="snk-common-jwt" />
+        <module name="snk-amqp" />
+        <module name="snk-common-oss" />
+        <module name="snk-file" />
+        <module name="user-consumer" />
+        <module name="snk-es" />
+        <module name="user-provider" />
+        <module name="snk-websocket" />
+        <module name="open-api" />
+        <module name="snk-common-core" />
+        <module name="snk-common-cache" />
+        <module name="snk-auth" />
+        <module name="snk-quartz" />
+        <module name="snk-common-xxl-job" />
+        <module name="snk-web-swagger" />
+        <module name="geteway" />
+        <module name="cloud-resources" />
+        <module name="snk-common-redis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud-resources" target="1.8" />
+      <module name="snk-api-validata" target="1.8" />
+      <module name="snk-common-cache" target="1.8" />
+      <module name="snk-common-quartz" target="1.8" />
+      <module name="snk-web-swagger" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloud-resources" options="-parameters" />
+      <module name="geteway" options="-parameters" />
+      <module name="open-api" options="-parameters" />
+      <module name="snk-amqp" options="-parameters" />
+      <module name="snk-api-validata" options="-parameters" />
+      <module name="snk-auth" options="-parameters" />
+      <module name="snk-common-cache" options="-parameters" />
+      <module name="snk-common-core" options="-parameters" />
+      <module name="snk-common-jwt" options="-parameters" />
+      <module name="snk-common-oss" options="-parameters" />
+      <module name="snk-common-quartz" options="-parameters" />
+      <module name="snk-common-redis" options="-parameters" />
+      <module name="snk-common-swagger" options="-parameters" />
+      <module name="snk-common-systeminfo" options="-parameters" />
+      <module name="snk-common-xxl-job" options="-parameters" />
+      <module name="snk-email" options="-parameters" />
+      <module name="snk-es" options="-parameters" />
+      <module name="snk-file" options="-parameters" />
+      <module name="snk-order" options="-parameters" />
+      <module name="snk-quartz" options="-parameters" />
+      <module name="snk-spring-boot-starter" options="-parameters" />
+      <module name="snk-web-common" options="" />
+      <module name="snk-web-swagger" options="-parameters" />
+      <module name="snk-websocket" options="-parameters" />
+      <module name="user-consumer" options="-parameters" />
+      <module name="user-provider" options="-parameters" />
+    </option>
+  </component>
+</project>

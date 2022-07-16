@@ -3,7 +3,7 @@ server:
 #配置rabbitMQ服务
 spring:
   redis:
-    host: 127.0.0.1
+    host: www.snkccj.top
     port: 6379
     database: 0
     lettuce:

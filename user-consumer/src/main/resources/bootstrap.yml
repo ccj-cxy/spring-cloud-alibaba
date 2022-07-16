@@ -11,6 +11,16 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         namespace:
+#    sentinel:
+#      #取消懒加载
+#      eager: true
+#      #      filter:
+#      #        enabled: false
+#      transport:
+#        #更控制台交流的端口，随意指定 一个未使用的端口
+#        port: 9999
+#        #指定控制台服务的地址
+#        dashboard: 127.0.0.1:8080
 
   application:
     name: user-consumer

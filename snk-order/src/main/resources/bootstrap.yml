@@ -1,0 +1,61 @@
+##微服务配置
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        name: snk-order
+        group: DEFAULT_GROUP
+        namespace:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace:
+    sentinel:
+      #取消懒加载
+      eager: true
+      #      filter:
+      #        enabled: false
+      transport:
+        #更控制台交流的端口，随意指定 一个未使用的端口
+        port: 9999
+        #指定控制台服务的地址
+        dashboard: 127.0.0.1:8080
+
+  application:
+    name: snk-order
+feign:
+  httpclient:
+    connection-timeout: 10000
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        #Feign的连接建立超时时间，默认为10秒
+        connectTimeout: 10000
+        #Feign的请求处理超时时间，默认为10秒
+        readTimeout: 10000
+        retryer:
+          feign:
+           #Feign使用默认的超时配置，在该类源码中可见，默认单次请求最大时长1秒，重试5次
+            Retryer: Default
+##配置负载均衡权重，不同服务都需要单独配置
+user-consumer: #服务名
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000 #缺省为1000
+logging:
+  level:
+    com.alibaba.nacos.client.config.impl: WARN
+    com:
+      alibaba:
+        nacos:
+          client:
+            naming: warn

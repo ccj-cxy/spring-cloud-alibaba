@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/geteway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/open-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-amqp/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-email/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-es/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-file/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-quartz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-jwt/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-oss/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-redis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-swagger/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-systeminfo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-common-xxl-job/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-web-common/snk-spring-boot-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/snk-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-provider/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

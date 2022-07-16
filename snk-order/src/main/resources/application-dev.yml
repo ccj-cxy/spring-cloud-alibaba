@@ -1,0 +1,12 @@
+spring:
+  redis:
+    host: www.snkccj.top
+    port: 6379
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1s
+        min-idle: 0
+    timeout: 1000ms

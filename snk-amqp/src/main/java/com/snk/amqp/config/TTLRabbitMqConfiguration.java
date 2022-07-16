@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * @author :Cai.ChangJun
  * @version 1.0.0
- * @Description : rabbitMQ配置配
+ * @Description : rabbitMQ配置配 延时队列
  * @Date : 2021/5/7
  */
 @Configuration

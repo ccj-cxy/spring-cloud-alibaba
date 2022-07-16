@@ -70,11 +70,6 @@
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
             <version>3.2.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>4.1.1</version>
-        </dependency>
         <!--添加测试类-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

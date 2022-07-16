@@ -71,6 +71,11 @@ public class UserDTO {
      */
     private String token;
 
+    /**
+     * 用户登录ip地址
+     */
+    private String ipAddr;
+
     private Set<Integer> roleIds;
 
     private Set<ResourceDTO> resources;

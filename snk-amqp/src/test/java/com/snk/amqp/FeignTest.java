@@ -20,6 +20,6 @@ public class FeignTest {
 
     @Test
     void test() {
-        Boolean aBoolean = userConsumerService.modifyMessageStatus(new BrokerMessageLogDTO().setMessageId("149732447200874496").setStatus("1"));
+       userConsumerService.modifyMessageStatus(new BrokerMessageLogDTO().setMessageId("149732447200874496").setStatus("1"));
     }
 }

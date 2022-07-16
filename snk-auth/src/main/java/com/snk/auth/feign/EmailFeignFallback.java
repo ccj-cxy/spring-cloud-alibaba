@@ -1,8 +1,6 @@
 package com.snk.auth.feign;
 
-import com.snk.auth.pojo.dto.OrdinaryEmailDTO;
 import com.snk.common.exception.BusinessException;
-import com.snk.common.webRetrun.Response;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -18,12 +16,9 @@ import org.springframework.stereotype.Component;
 public class EmailFeignFallback  implements FallbackFactory<EmailFeign> {
     @Override
     public EmailFeign create(Throwable throwable) {
-        return new EmailFeign() {
-            @Override
-            public Response sendEmail(OrdinaryEmailDTO ordinaryEmailDTO) {
+        return ordinaryEmailDTO -> {
                 log.error("接口调用异常{}","sendEmail");
                 throw new BusinessException("服务调用异常");
-            }
-        };
+            };
     }
 }

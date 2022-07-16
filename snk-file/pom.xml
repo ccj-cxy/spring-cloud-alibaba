@@ -20,6 +20,10 @@
                     <groupId>com.github.pagehelper</groupId>
                     <artifactId>pagehelper-spring-boot-starter</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>com.snk</groupId>
+                    <artifactId>snk-common-redis</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 

@@ -3,17 +3,21 @@ package com.snk.userconumer.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.snk.common.exception.BusinessException;
+import com.snk.common.webRetrun.Response;
 import com.snk.userconumer.pojo.domain.BrokerMessageLog;
 import com.snk.userconumer.service.BrokerMessageLogService;
+import org.apache.poi.ss.formula.functions.T;
+import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -29,22 +33,31 @@ public class BrokerMessageLogController {
 
     @Autowired
     BrokerMessageLogService brokerMessageLogService;
+    @Autowired
+    private Redisson redisson;
 
     /**根据消息id修改消息冗余表状态*/
     @PostMapping("/modifyMessageStatus")
-    public Boolean modifyMessageStatus(@RequestBody @Validated BrokerMessageLog brokerMessageLog) {
+    public Response modifyMessageStatus(@RequestBody @Validated BrokerMessageLog brokerMessageLog) throws InterruptedException {
         QueryWrapper<BrokerMessageLog> brokerMessageLogQueryWrapper = new QueryWrapper<>();
-        brokerMessageLogQueryWrapper.eq("message_id",brokerMessageLog.getMessageId());
-        Optional<BrokerMessageLog> one = Optional.ofNullable(brokerMessageLogService.getOne(brokerMessageLogQueryWrapper));
-        if (!one.isPresent()) {
-            throw new BusinessException("未查询到消息");
+        brokerMessageLogQueryWrapper.eq("message_id", brokerMessageLog.getMessageId());
+        RLock lock = redisson.getLock(brokerMessageLog.getMessageId());
+        lock.lock(10, TimeUnit.SECONDS);
+        boolean res = lock.tryLock(100, 10, TimeUnit.SECONDS);
+        if (res) {
+            try {
+                //添加当前对象锁
+                BrokerMessageLog brokerMessageLog1 = Optional.ofNullable(brokerMessageLogService.getOne(brokerMessageLogQueryWrapper)).orElseThrow(() -> new BusinessException("未查询到消息"));
+                //防止重复消费造成过度修改
+                if ("3".equalsIgnoreCase(brokerMessageLog1.getStatus())) {
+                    return new Response<>();
+                }
+                return new Response<>(brokerMessageLogService.update(brokerMessageLog, brokerMessageLogQueryWrapper));
+            } finally {
+                lock.unlock();
+            }
         }
-        if ("3".equalsIgnoreCase(one.get().getStatus())) {
-            return true;
-        }
-        return brokerMessageLogService.update(brokerMessageLog,brokerMessageLogQueryWrapper);
+        return new Response<>(500,"失败！");
     }
-
-
 }
 

@@ -14,7 +14,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -56,7 +55,7 @@ public class BrokerMessageLog implements Serializable {
     /**
      * 下一次重试时间 或 超时时间
      */
-    private LocalDateTime nextRetry;
+    private Date nextRetry;
 
     /**
      * 创建时间

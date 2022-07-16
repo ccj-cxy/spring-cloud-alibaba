@@ -35,7 +35,7 @@ public class ConsumerOrderService {
 
 
     @RabbitListener(queues = OrderFanoutConfig.ORDER_QUEUE)
-    public void consumeOrder(Message message, Channel channel) {
+    public void consumeOrder(Message message, Channel channel)  {
         OrderDTO orderDTO = null;
         try {
             orderDTO = JSONUtil.toBean( new String(message.getBody(),"UTF-8"), OrderDTO.class);
